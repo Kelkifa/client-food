@@ -10,7 +10,7 @@ namespace Food
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new TabbedPageContainer();
         }
 
         protected override void OnStart()

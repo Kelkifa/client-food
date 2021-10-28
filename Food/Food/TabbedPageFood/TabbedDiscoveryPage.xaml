@@ -5,11 +5,28 @@
              x:Class="Food.TabbedPageFood.TabbedDiscoveryPage" IconImageSource="iconDiamond.png" BarBackgroundColor="White" BarTextColor="Black" UnselectedTabColor="Blue" SelectedTabColor="Red">
         
   <!--Pages can be added as references or inline-->
-    <ContentPage Title="Xem nhanh">
-        <StackLayout>
-            <Label Text="Hello world"></Label>
-        </StackLayout>
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding Slider,Source={StaticResource Locator}}"
+             xmlns:slider="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             Title="Xem nhanh">
+        <ContentPage.Content>
+            <StackLayout>
+                <slider:CarouselViewControl x:Name="mainSlider" ItemsSource="{Binding Sliders}" HeightRequest="200" 
+                                        ShowIndicators="True" CurrentPageIndicatorTintColor="Red" 
+                                        IndicatorsTintColor="#ffedcd"  AnimateTransition="True"
+                                        VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <slider:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout VerticalOptions="Fill" Padding="0">
+                                <Image Source="{Binding Url}" Aspect="AspectFill" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </slider:CarouselViewControl.ItemTemplate>
+                </slider:CarouselViewControl>
+            </StackLayout>
+        </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="Bán chạy" />
-  <ContentPage Title="Ưu đãi" />
+    <ContentPage Title="Ưu đãi" />
 </TabbedPage>

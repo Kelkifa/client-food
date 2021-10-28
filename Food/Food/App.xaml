@@ -1,8 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:Food.ViewModels"
              x:Class="Food.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator"/>
 
+            <OnPlatform x:Key="Avo"
+                        x:TypeArguments="x:String"
+                        iOS="UTMAvo"
+                        Android="UTMAvo.ttf#UTM Avo"/>
+            <OnPlatform x:Key="AvoBold"
+                        x:TypeArguments="x:String"
+                        iOS="UTMAvoBold"
+                        Android="UTMAvoBold.ttf#UTM Avo"/>
+            <OnPlatform x:Key="ARDESTINE"
+                        x:TypeArguments="x:String"
+                        iOS="ARDESTINE"
+                        Android="ARDESTINE.ttf#AR DESTINE"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

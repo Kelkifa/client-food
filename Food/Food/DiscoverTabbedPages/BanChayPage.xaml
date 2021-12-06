@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Food.DiscoverTabbedPages.BanChayPage">
+    <ContentPage.Content>
+        <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstBanChay" SelectionChanged="lstBanChay_SelectionChanged" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10">
+                        <Image Source="{Binding image}" Aspect="AspectFit" HeightRequest="150"/>
+                        <Label Text="{Binding text}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

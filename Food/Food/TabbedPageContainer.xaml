@@ -5,10 +5,14 @@
              x:Class="Food.TabbedPageContainer"
              xmlns:pages="clr-namespace:Food.TabbedPageFood"
             >
+    <NavigationPage.TitleView>
+        <Label Text="Siêu Thị" HorizontalOptions="Center" TextColor="White" FontSize="Large"/>
+    </NavigationPage.TitleView>
+
     <TabbedPage.ToolbarItems>
         <ToolbarItem  x:Name="itemMenu_help" Text="Cart" />
     </TabbedPage.ToolbarItems>
-  <!--Pages can be added as references or inline-->
+    <!--Pages can be added as references or inline-->
 
     <pages:TabbedDiscoveryPage Title="Khám phá" />
     <pages:StoreTabbedPage Title="Cửa hàng" />

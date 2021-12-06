@@ -15,8 +15,9 @@ namespace Food.TabbedPageFood
     {
         public TabbedDiscoveryPage()
         {
-            InitializeComponent();
+            
 
+            InitializeComponent();
             /*var vm = (SliderViewModel)this.BindingContext;
             vm.LoadData();
 

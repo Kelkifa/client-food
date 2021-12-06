@@ -4,12 +4,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.TabbedPageContainer"
              xmlns:pages="clr-namespace:Food.TabbedPageFood"
-
-            BarBackgroundColor="Yellow"
-            BarTextColor="Gray"
-            SelectedTabColor="Black"            
             >
-    <!--Pages can be added as references or inline-->
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem  x:Name="itemMenu_help" Text="Cart" />
+    </TabbedPage.ToolbarItems>
+  <!--Pages can be added as references or inline-->
+
     <pages:TabbedDiscoveryPage Title="Khám phá" />
     <pages:StoreTabbedPage Title="Cửa hàng" />
     <pages:SearchPage Title="Tìm kiếm" />

@@ -45,8 +45,8 @@ namespace Food.DiscoverTabbedPages
 
         private void lstBanChay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TestData data = (TestData)lstBanChay.SelectedItem;
-            DisplayAlert("Thong bao ", data.text, "OK");
+            Food selectedFood = (Food)lstBanChay.SelectedItem;
+            // Navigator to detail page
         }
     }
 }

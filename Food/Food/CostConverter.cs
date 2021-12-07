@@ -12,7 +12,7 @@ namespace Food
         {
             int cost = (int)value;
 
-            return cost.ToString("N0");
+            return cost.ToString("N0") + " đ";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

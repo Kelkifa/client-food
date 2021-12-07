@@ -15,7 +15,7 @@ https://github.com/Kelkifa/xamarin-server-food
 
 ## API Food schema:
 ```js
-foods = new Schema(
+const foods = new Schema(
     {
         name: { type: String },
         type: { type: String },

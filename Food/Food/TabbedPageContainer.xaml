@@ -4,11 +4,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.TabbedPageContainer"
              xmlns:pages="clr-namespace:Food.TabbedPageFood"
+            BarBackground="#fff688"
+            BarTextColor="Gray"
             >
+    <NavigationPage.TitleView>
+        <Label Text="Siêu Thị" HorizontalOptions="Center" TextColor="Black" FontSize="Large"/>
+    </NavigationPage.TitleView>
+
     <TabbedPage.ToolbarItems>
-        <ToolbarItem  x:Name="itemMenu_help" Text="Cart" />
+        <ToolbarItem  x:Name="itemMenu_help" IconImageSource="iconCart2.png"/>
     </TabbedPage.ToolbarItems>
-  <!--Pages can be added as references or inline-->
+    <!--Pages can be added as references or inline-->
 
     <pages:TabbedDiscoveryPage Title="Khám phá" />
     <pages:StoreTabbedPage Title="Cửa hàng" />

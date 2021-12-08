@@ -11,6 +11,17 @@ namespace Food
             InitializeComponent();
 
             MainPage = new NavigationPage(new TabbedPageContainer());
+            InitStyleNavigationBar();
+            
+        }
+
+        void InitStyleNavigationBar()
+        {
+            var navigationPage = Application.Current.MainPage as NavigationPage;
+            navigationPage.BarBackgroundColor = Color.Yellow;
+            navigationPage.BarBackgroundColor = Color.FromHex("#fff688");
+
+
         }
 
         protected override void OnStart()

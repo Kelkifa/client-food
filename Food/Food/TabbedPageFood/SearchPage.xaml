@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Food.TabbedPageFood.SearchPage" IconImageSource="iconSearch.png">
+             x:Class="Food.TabbedPageFood.SearchPage" IconImageSource="iconSearch.png"
+             xmlns:Food="clr-namespace:Food"
+             >
+
+    <ContentPage.Resources>
+        <Food:CostConverter x:Key="colorConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
 
         <StackLayout>
-            <SearchBar x:Name="Search" Placeholder="Tìm kiếm sản phẩm" PlaceholderColor="#333" CancelButtonColor="Orange"
-                       HorizontalTextAlignment="Center" TextChanged="Search_TextChanged"></SearchBar>
+            <SearchBar x:Name="inputSearch" Placeholder="Tìm kiếm sản phẩm" PlaceholderColor="#333" CancelButtonColor="Orange"
+                       HorizontalTextAlignment="Center" TextChanged="Search_TextChanged"  />
             <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstProducts" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

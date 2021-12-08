@@ -37,7 +37,7 @@ namespace Food.TabbedPageFood
             //DisplayAlert("Thong bao", response, "OK");
 
             lstProducts.ItemsSource = foodList;
-            var searchresult = foodList.Where(c => c.name.Contains(Search.Text));
+            var searchresult = foodList.Where(c => c.name.ToLower().Contains(Search.Text.ToLower()));
             lstProducts.ItemsSource = searchresult;
         }
     }

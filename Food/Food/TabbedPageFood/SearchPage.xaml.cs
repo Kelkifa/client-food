@@ -27,12 +27,7 @@ namespace Food.TabbedPageFood
 
         private async void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            HttpClient http = new HttpClient();
-
-            string response = await http.GetStringAsync("https://xamarin-food.herokuapp.com/api/food/json");
-
-            List<Food> foodList = JsonConvert.DeserializeObject<List<Food>>(response);
-            lstProducts.ItemsSource = foodList;
+            
         }
     }
 }

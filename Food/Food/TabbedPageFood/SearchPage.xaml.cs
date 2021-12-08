@@ -33,6 +33,15 @@ namespace Food.TabbedPageFood
 
             List<Food> foodList = JsonConvert.DeserializeObject<List<Food>>(response);
 
+            if(foodList.Count == 0)
+            {
+                txtNotifice.IsVisible = true;
+            }
+            else
+            {
+                txtNotifice.IsVisible = false;
+            }
+
             lstProducts.ItemsSource = foodList;
         }
     }

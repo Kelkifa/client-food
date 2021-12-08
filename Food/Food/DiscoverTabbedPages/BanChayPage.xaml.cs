@@ -30,14 +30,23 @@ namespace Food.DiscoverTabbedPages
 
         async void InitialData()
         {
+            txtLoadNotifice.IsVisible = true;
+
             HttpClient http = new HttpClient();
 
             string response = await http.GetStringAsync("https://xamarin-food.herokuapp.com/api/food/json");
+            txtLoadNotifice.IsVisible = false;
 
             List<Food> foodList = JsonConvert.DeserializeObject<List<Food>>(response);
 
-
-            //DisplayAlert("Thong bao", response, "OK");
+            if(foodList.Count == 0)
+            {
+                txtEmptyNotifice.IsVisible = true;
+            }
+            else
+            {
+                txtEmptyNotifice.IsVisible = false;
+            }
 
             lstBanChay.ItemsSource = foodList;
         }

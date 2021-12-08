@@ -7,31 +7,35 @@
         <Food:CostConverter x:Key="colorConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstBanChay" SelectionChanged="lstBanChay_SelectionChanged" SelectionMode="Single">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="5" Spacing="0">
-                        <Image Source="{Binding image}" Aspect="Fill" HeightRequest="150" />
+        <StackLayout>
+            <Label x:Name="txtLoadNotifice"  Text="Loading ..." FontSize="16" HorizontalTextAlignment="Center" IsVisible="True"/>
+            <Label x:Name="txtEmptyNotifice"  Text="Không tìm thấy" FontSize="16" HorizontalTextAlignment="Center" IsVisible="False"/>
+            <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstBanChay" SelectionChanged="lstBanChay_SelectionChanged" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5" Spacing="0">
+                            <Image Source="{Binding image}" Aspect="Fill" HeightRequest="150" />
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding production}" Grid.Row="0" Grid.Column="0"/>
-                            <Label Text="{Binding unit}" Grid.Row="0" Grid.Column="1" HorizontalOptions="End"/>
+                                <Label Text="{Binding production}" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding unit}" Grid.Row="0" Grid.Column="1" HorizontalOptions="End"/>
 
-                        </Grid>
-                        
-                        <Label Text="{Binding name}"  FontSize="15" TextColor="Black" FontAttributes="Bold" />
-                        <Label Text="{Binding cost, Converter={StaticResource colorConverter}}"  FontSize="15" TextColor="Red" FontAttributes="Bold"/>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            </Grid>
+
+                            <Label Text="{Binding name}"  FontSize="15" TextColor="Black" FontAttributes="Bold" />
+                            <Label Text="{Binding cost, Converter={StaticResource colorConverter}}"  FontSize="15" TextColor="Red" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

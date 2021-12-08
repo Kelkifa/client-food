@@ -29,13 +29,11 @@ namespace Food.TabbedPageFood
         {
             HttpClient http = new HttpClient();
 
-            string response = await http.GetStringAsync("https://xamarin-food.herokuapp.com/api/food/json");
+            string response = await http.GetStringAsync("https://xamarin-food.herokuapp.com/api/food/json?s="+inputSearch.Text);
 
             List<Food> foodList = JsonConvert.DeserializeObject<List<Food>>(response);
-            lstProducts.ItemsSource = foodList;
 
-            var searchresult = foodList.Where(c => c.name.ToLower().Contains(inputSearch.Text.ToLower()));
-            lstProducts.ItemsSource = searchresult;
+            lstProducts.ItemsSource = foodList;
         }
     }
 }

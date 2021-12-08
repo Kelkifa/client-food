@@ -33,6 +33,9 @@ namespace Food.TabbedPageFood
 
             List<Food> foodList = JsonConvert.DeserializeObject<List<Food>>(response);
             lstProducts.ItemsSource = foodList;
+
+            var searchresult = foodList.Where(c => c.name.ToLower().Contains(inputSearch.Text.ToLower()));
+            lstProducts.ItemsSource = searchresult;
         }
     }
 }

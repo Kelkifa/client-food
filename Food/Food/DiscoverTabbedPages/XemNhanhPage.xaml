@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Food.DiscoverTabbedPages.XemNhanhPage">
+    <ContentPage.Content>
+        
+        <CollectionView ItemsLayout="VerticalGrid, 3" x:Name="XemNgay" >
+            
+            <CollectionView.ItemTemplate>
+                
+                <DataTemplate>
+
+                    <StackLayout Padding="5" Spacing="0">
+                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding XemNhanhImage}" Grid.Row="0" Grid.Column="0"></Image>
+                            <Label Text="{Binding XemNhanhLabel}" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                            
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

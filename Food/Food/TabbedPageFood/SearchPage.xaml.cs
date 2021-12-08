@@ -27,8 +27,6 @@ namespace Food.TabbedPageFood
 
         private async void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string searchData = (string)inputSearch.Text;
-
             HttpClient http = new HttpClient();
 
             string response = await http.GetStringAsync("https://xamarin-food.herokuapp.com/api/food/json");

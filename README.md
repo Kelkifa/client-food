@@ -3,6 +3,8 @@
 ## API SERVER
 - JSON API cho app
 https://xamarin-food.herokuapp.com/api/food/json
+- JSON API cho app để search
+https://xamarin-food.herokuapp.com/api/food/json?s=SEARCH_GI_DO
 
 - Trang web để xem xoá sửa food:
 https://xamarin-food.herokuapp.com/food/list

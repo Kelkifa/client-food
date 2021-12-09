@@ -13,6 +13,7 @@ namespace Food
         public string description { get; set; }
         public string production { get; set; }
         public int cost { get; set; }
+        public int discount { get; set; }
         public string unit { get; set; }
         public string minMass { get; set; }
         public string maxMass { get; set; }

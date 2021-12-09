@@ -1,12 +1,13 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
-namespace Food
+namespace Food.Converters
 {
-    public class CostConverter : IValueConverter
+    class CostConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -5,7 +5,7 @@
              x:Class="Food.TabbedPageContainer"
              xmlns:pages="clr-namespace:Food.TabbedPageFood"
             BarBackground="#fff688"
-            BarTextColor="Gray"
+            UnselectedTabColor="Gray" SelectedTabColor="Black"
             >
     <NavigationPage.TitleView>
         <Label Text="Siêu Thị" HorizontalOptions="Center" TextColor="Black" FontSize="Large"/>

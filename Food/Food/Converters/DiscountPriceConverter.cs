@@ -14,7 +14,7 @@ namespace Food.Converters
             int cost = (int)values[0];
             int discount = (int)values[1];
 
-            return (cost-cost*discount).ToString("N0") + " đ";
+            return (cost-cost*discount/100).ToString("N0") + " đ";
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

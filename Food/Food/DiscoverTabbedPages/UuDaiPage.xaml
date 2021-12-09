@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Food.DiscoverTabbedPages.UuDaiPage"
+             xmlns:FoodConverter="clr-namespace:Food.Converters"
+             >
+    <ContentPage.Resources>
+        <FoodConverter:CostConverter x:Key="costConverter"/>
+        <FoodConverter:IsShowCostConverter x:Key="costIsShowConverter" />
+        <FoodConverter:DiscountCoverter x:Key="discountConverter"/>
+        <FoodConverter:DiscountPriceConverter x:Key="discountPriceConverter"/>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="txtLoadNotifice"  Text="Loading ..." FontSize="16" HorizontalTextAlignment="Center" IsVisible="True"/>
+            <Label x:Name="txtEmptyNotifice"  Text="Không tìm thấy" FontSize="16" HorizontalTextAlignment="Center" IsVisible="False"/>
+            <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstBanChay" SelectionChanged="lstBanChay_SelectionChanged" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5" Spacing="0">
+                            <Image Source="{Binding image}" Aspect="Fill" HeightRequest="150" />
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding production}" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding unit}" Grid.Row="0" Grid.Column="1" HorizontalOptions="End"/>
+
+                            </Grid>
+
+                            <Label Text="{Binding name}"  FontSize="15" TextColor="Black" FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label FontSize="15" TextColor="Red" FontAttributes="Bold">
+                                    <Label.Text>
+                                        <MultiBinding Converter="{StaticResource discountPriceConverter}">
+                                            <Binding Path="cost" />
+                                            <Binding Path="discount" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <Label Text="{Binding cost, Converter={StaticResource costConverter}}"   
+                                       IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
+                                       FontSize="15" TextDecorations="Strikethrough"
+                                />
+                            </StackLayout>
+                            <Label Text="{Binding discount, Converter={StaticResource discountConverter}}"
+                                   IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
+                                   FontSize="15" TextColor="White" Background="Orange" FontAttributes="Bold" HorizontalOptions="Start" Padding="7, 0"/>
+
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

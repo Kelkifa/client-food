@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.TabbedPageFood.SearchPage" IconImageSource="iconSearch.png"
-             xmlns:Food="clr-namespace:Food"
+             xmlns:FoodConverter="clr-namespace:Food.Converters"
              >
 
     <ContentPage.Resources>
-        <Food:CostConverter x:Key="colorConverter"/>
+        <FoodConverter:CostConverter x:Key="colorConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
 

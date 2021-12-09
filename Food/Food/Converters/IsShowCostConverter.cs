@@ -4,15 +4,19 @@ using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
-namespace Food
+namespace Food.Converters
 {
-    public class CostConverter : IValueConverter
+    class IsShowCostConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            int cost = (int)value;
+            if (value == null) return false;
 
-            return cost.ToString("N0") + " đ";
+            int discount = (int)value;
+
+            if (discount == 0) return false;
+            else return true;
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -39,6 +39,7 @@ namespace Food.DiscoverTabbedPages
 
             List<Food> foodList = JsonConvert.DeserializeObject<List<Food>>(response);
 
+
             if(foodList.Count == 0)
             {
                 txtEmptyNotifice.IsVisible = true;

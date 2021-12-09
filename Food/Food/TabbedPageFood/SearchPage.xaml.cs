@@ -29,7 +29,7 @@ namespace Food.TabbedPageFood
         {
             HttpClient http = new HttpClient();
 
-            string response = await http.GetStringAsync("https://xamarin-food.herokuapp.com/api/food/json?s="+inputSearch.Text);
+            string response = await http.GetStringAsync("https://xamarin-food.herokuapp.com/api/food/json?s=" + inputSearch.Text);
 
             List<Food> foodList = JsonConvert.DeserializeObject<List<Food>>(response);
 

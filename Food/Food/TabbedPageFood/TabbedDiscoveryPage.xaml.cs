@@ -18,14 +18,7 @@ namespace Food.TabbedPageFood
             
 
             InitializeComponent();
-            /*var vm = (SliderViewModel)this.BindingContext;
-            vm.LoadData();
-
-            Device.StartTimer(TimeSpan.FromSeconds(2), (Func<bool>)(() =>
-            {
-                mainSlider.Position = mainSlider.Position < vm.Sliders.Count - 1 ? mainSlider.Position + 1 : 0;
-                return true;
-            }));*/
+            
         }
     }
 }

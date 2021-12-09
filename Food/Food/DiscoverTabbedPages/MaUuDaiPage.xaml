@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Food.DiscoverTabbedPages.MaUuDaiPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <ListView x:Name="MaUuDaiDetail" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="200"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding XemNhanhInfoImage}" Grid.Row="0" Grid.Column="0"
+                                   HorizontalOptions="CenterAndExpand" Aspect="AspectFill"></Image>
+                            <Label Text="{Binding XemNhanhInfoLabel}" Grid.Row="1" Grid.Column="0"
+                                   FontAttributes="Bold" FontSize="Large" TextColor="#333" HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

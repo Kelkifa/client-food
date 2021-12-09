@@ -48,7 +48,8 @@
                                        FontSize="15" TextDecorations="Strikethrough"
                                 />
                             </StackLayout>
-                            <Label Text="{Binding discount, Converter={StaticResource discountConverter}}"  
+                            <Label Text="{Binding discount, Converter={StaticResource discountConverter}}"
+                                   IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
                                    FontSize="15" TextColor="White" Background="Orange" FontAttributes="Bold" HorizontalOptions="Start" Padding="7, 0"/>
 
 

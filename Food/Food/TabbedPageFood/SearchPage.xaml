@@ -6,7 +6,10 @@
              >
 
     <ContentPage.Resources>
-        <FoodConverter:CostConverter x:Key="colorConverter"/>
+        <FoodConverter:CostConverter x:Key="costConverter"/>
+        <FoodConverter:IsShowCostConverter x:Key="costIsShowConverter" />
+        <FoodConverter:DiscountCoverter x:Key="discountConverter" />
+        <FoodConverter:DiscountPriceConverter x:Key="discountPriceConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
 
@@ -35,7 +38,25 @@
                             </Grid>
 
                             <Label Text="{Binding name}"  FontSize="15" TextColor="Black" FontAttributes="Bold" />
-                            <Label Text="{Binding cost, Converter={StaticResource colorConverter}}"  FontSize="15" TextColor="Red" FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label FontSize="15" TextColor="Red" FontAttributes="Bold">
+                                    <Label.Text>
+                                        <MultiBinding Converter="{StaticResource discountPriceConverter}">
+                                            <Binding Path="cost" />
+                                            <Binding Path="discount" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <Label Text="{Binding cost, Converter={StaticResource costConverter}}"   
+                                       IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
+                                       FontSize="15" TextDecorations="Strikethrough"
+                                />
+                            </StackLayout>
+                            <Label Text="{Binding discount, Converter={StaticResource discountConverter}}"
+                                   IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
+                                   FontSize="15" TextColor="White" Background="Orange" FontAttributes="Bold" HorizontalOptions="Start" Padding="7, 0"/>
+
+
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

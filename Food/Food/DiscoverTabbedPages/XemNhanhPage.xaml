@@ -23,7 +23,7 @@
                 </slider:CarouselViewControl>
 
 
-                <CollectionView ItemsLayout="VerticalGrid, 3" x:Name="XemNgay" SelectionChanged="XemNgay_SelectionChanged">
+                <CollectionView ItemsLayout="VerticalGrid, 3" x:Name="XemNgay" SelectionChanged="XemNgay_SelectionChanged" SelectionMode="Single">
 
                     <CollectionView.ItemTemplate>
 

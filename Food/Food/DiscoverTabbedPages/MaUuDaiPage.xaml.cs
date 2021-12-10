@@ -51,8 +51,15 @@ namespace Food.DiscoverTabbedPages
                 });
             }
 
+            //CHoppUD
+            if(xemNhanh1.XemNhanhID == "XN2")
+            {
+                Navigation.PushAsync(new UuDaiPage());
+            }
+            
+
             // Moi
-            if (xemNhanh1.XemNhanhID == "XN3")
+            else if (xemNhanh1.XemNhanhID == "XN3")
             {
                 xemNhanhLst.Add(new XemNhanhInfo
                 {
@@ -97,7 +104,44 @@ namespace Food.DiscoverTabbedPages
                     XemNhanhInfoImage = "Moi7.jpg"
                 });
             }
+
+            // CT
+            else if (xemNhanh1.XemNhanhID == "XN4")
+            {
+                xemNhanhLst.Add(new XemNhanhInfo
+                {
+                    XemNhanhInfoID = "CT1",
+                    XemNhanhInfoLabel = "Công thức nấu ăn khỏe với trái cây",
+                    XemNhanhInfoImage = "CT1.jpg"
+                });
+            }
+
+            // Chopp BM
+            else if (xemNhanh1.XemNhanhID == "XN5")
+            {
+                xemNhanhLst.Add(new XemNhanhInfo
+                {
+                    XemNhanhInfoID = "ChopBM1",
+                    XemNhanhInfoLabel = "Túi chopp eco mới",
+                    XemNhanhInfoImage = "ChopBM1.jpg"
+                });
+            }
+
+            // Chopp BM
+            else if (xemNhanh1.XemNhanhID == "XN6")
+            {
+                xemNhanhLst.Add(new XemNhanhInfo
+                {
+                    XemNhanhInfoID = "ChopVIP",
+                    XemNhanhInfoLabel = "Túi chopp eco mới",
+                    XemNhanhInfoImage = "ChopBM2.jpg"
+                });
+            }
+
+            MaUuDaiDetail.ItemsSource = xemNhanhLst;
         }
+
+        List<XemNhanhInfo> xemNhanhLst = new List<XemNhanhInfo>();
 
     }
 }

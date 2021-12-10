@@ -2,22 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.TaiKhoanTabbedpages.LoginPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="Padding" Value="5, 0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <AbsoluteLayout Margin="5,0,5,5">
+        <AbsoluteLayout >
             
-            <FlexLayout IsVisible="True" JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="30,0,30,0">
+            <FlexLayout IsVisible="True" JustifyContent="SpaceEvenly" Direction="Column" Margin="5,0,5,0">
                 
                 <Image Source="slide1.jpg" FlexLayout.AlignSelf="Center" Background="Transparent" />
                 
                 <Entry x:Name="userNameEntry" ReturnType="Next" MaxLength="10" 
                        Placeholder="User Name" FontSize="Medium" FlexLayout.AlignSelf="Stretch"
                        HorizontalOptions="CenterAndExpand" TextColor="#000" Keyboard="Text" />
-                
+                <Label x:Name="txtUseNotifi" IsVisible="false"/>
+
                 <Entry x:Name="passwordEntry" ReturnType="Next" MaxLength="12" IsPassword="True" Placeholder="Password" 
                        FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black"  />
-                
-                <Label x:Name="warningLabel" Text="" IsVisible="False" TextColor="Blue" 
-                       FontSize="15" BackgroundColor="Transparent" FlexLayout.AlignSelf="End"/>
+                <Label x:Name="txtPassNoti" IsVisible="false"/>
 
                 <Button x:Name="LogIn" Clicked="LogIn_Clicked" FontSize="Medium" TextColor="White" BorderColor="Black" BackgroundColor="#00b33c"  
                         CornerRadius="5" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand" Text="Log In"/>

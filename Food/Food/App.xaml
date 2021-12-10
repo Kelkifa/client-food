@@ -18,6 +18,10 @@
                         x:TypeArguments="x:String"
                         iOS="ARDESTINE"
                         Android="ARDESTINE.ttf#AR DESTINE"/>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarTextColor" Value="Black"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Food.TabbedPageFood
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaiKhoanTabbedPage : ContentPage
+    public partial class TaiKhoanTabbedPage : TabbedPage
     {
         public TaiKhoanTabbedPage()
         {

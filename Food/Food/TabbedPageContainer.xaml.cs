@@ -16,5 +16,10 @@ namespace Food
         {
             InitializeComponent();
         }
+
+        private void itemMenu_help_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CartPage());
+        }
     }
 }

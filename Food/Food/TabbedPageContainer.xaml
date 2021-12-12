@@ -12,7 +12,7 @@
     </NavigationPage.TitleView>
 
     <TabbedPage.ToolbarItems>
-        <ToolbarItem  x:Name="itemMenu_help" IconImageSource="iconCart2.png"/>
+        <ToolbarItem  x:Name="itemMenu_help" IconImageSource="iconCart2.png" Clicked="itemMenu_help_Clicked"/>
     </TabbedPage.ToolbarItems>
     <!--Pages can be added as references or inline-->
 

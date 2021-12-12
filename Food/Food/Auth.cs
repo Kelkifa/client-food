@@ -8,7 +8,5 @@ namespace Food
     {
         public string username { get; set; }
         public string password { get; set; }
-
-        public static string currUsername = null;
     }
 }

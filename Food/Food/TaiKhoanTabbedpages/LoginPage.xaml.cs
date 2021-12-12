@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Food.ApiResponseClass;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,46 +35,25 @@ namespace Food.TaiKhoanTabbedpages
             }
         }
 
-        async void FetchApi(string username, string password)
-        {
-            var client = new HttpClient { BaseAddress = new Uri("https://xamarin-food.herokuapp.com") };
-
-            var pairs = new List<KeyValuePair<string, string>>
-            {
-                new KeyValuePair<string, string>("username", username),
-                new KeyValuePair<string, string>("password", password),
-            };
-
-            var content = new FormUrlEncodedContent(pairs);
-
-            var response = await client.PostAsync("api/auth/login", content);
-
-            string result = await response.Content.ReadAsStringAsync();
-
-            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(result);
-            if (response.IsSuccessStatusCode)
-            {
-                if (apiResponse.success == true)
-                {
-                    DisplayAlert("Thong bao", "Đăng nhâp thành công", "OK");
-                    Auth.currUsername = userNameEntry.Text;
-                    Navigation.PushAsync(new LoginPage());
-                }
-                else
-                {
-                    DisplayAlert("Thong bao", apiResponse.message, "OK");
-                }
-            }
-        }
-        private void LogIn_Clicked(object sender, EventArgs e)
+        private async void LogIn_Clicked(object sender, EventArgs e)
         {
             bool flagUsername = IsNotEmptyAndSetNotifi("Bạn chưa nhập trường này", txtUseNotifi, userNameEntry.Text);
             bool flagPassword= IsNotEmptyAndSetNotifi("Bạn chưa nhập trường này", txtPassNoti, passwordEntry.Text);
 
             if (flagUsername || flagPassword) return;
 
-            FetchApi(userNameEntry.Text, passwordEntry.Text);
+            ApiCall apiCall = new ApiCall();
+            LoginRes apiResponse = await apiCall.FetchLoginAsync(userNameEntry.Text, passwordEntry.Text);
 
+            if(apiResponse.success == true)
+            {
+                ApiCall.userId = apiResponse.response;
+            _ = DisplayAlert("Thong bao", "Đăng nhập thành công", "OK");
+            }
+            else
+            {
+                _ = DisplayAlert("Thong bao", apiResponse.message, "OK");
+            }
         }
 
         private void Register_Clicked(object sender, EventArgs e)

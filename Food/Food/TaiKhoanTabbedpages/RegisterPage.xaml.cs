@@ -51,27 +51,18 @@ namespace Food.TaiKhoanTabbedpages
                 return;
             }
 
-            var client = new HttpClient { BaseAddress = new Uri("https://xamarin-food.herokuapp.com") };
+            ApiCall apiCall = new ApiCall();
 
-            var pairs = new List<KeyValuePair<string, string>>
-            {
-                new KeyValuePair<string, string>("username", userNameEntry.Text),
-                new KeyValuePair<string, string>("password", passwordEntry.Text),
-            };
 
-            var content = new FormUrlEncodedContent(pairs);
+            ApiResponse apiResponse = await apiCall.fetchRegisterAsync(userNameEntry.Text, passwordEntry.Text);
 
-            var response = await client.PostAsync("api/auth/register", content);
-
-            string result = await response.Content.ReadAsStringAsync();
-
-            ApiResponse apiResponse= JsonConvert.DeserializeObject<ApiResponse>(result);
+            _ = DisplayAlert("Thong bao", apiResponse.message, "OK");
+            /*
             if (response.IsSuccessStatusCode)
             {
                 if(apiResponse.success == true)
                 {
                     DisplayAlert("Thong bao", "Đăng ký thành công" , "OK");
-                    Auth.currUsername = userNameEntry.Text;
                     Navigation.PushAsync(new LoginPage());
                 }
                 else
@@ -80,6 +71,7 @@ namespace Food.TaiKhoanTabbedpages
 
                 }
             }
+            */
         }
 
         private void Login_Clicked(object sender, EventArgs e)

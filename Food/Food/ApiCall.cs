@@ -83,7 +83,7 @@ namespace Food
                 Method = method == "post" ? HttpMethod.Post : HttpMethod.Get,
                 RequestUri = new Uri(this.baseUrl + url),
                 Headers = {
-                    { HttpRequestHeader.Authorization.ToString(), "Bearer 61b5b7af59ae4800232d977b" },
+                    { HttpRequestHeader.Authorization.ToString(), "Bearer " + userId },
                     { HttpRequestHeader.Accept.ToString(), "application/json" },
                     { "X-Version", "1" }
                 },

@@ -63,6 +63,11 @@ namespace Food
             return apiResponse;
         }
 
+        internal void FetchAddCart(int soLuong, string foodId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<CartResponse> fetchCartAsync()
         {
             string url = "api/cart/get";
@@ -76,6 +81,31 @@ namespace Food
             CartResponse apiResponse = JsonConvert.DeserializeObject<CartResponse>(result);
             return apiResponse;
         }
+
+        public async Task<ApiResponse> fetchAddToCartAsync(int soLuong, string foodId)
+        {
+            string url = "api/cart/add";
+
+            var pairs = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("foodId", foodId),
+                new KeyValuePair<string, string>("soLuong", soLuong.ToString()),
+            };
+
+            FormUrlEncodedContent content = new FormUrlEncodedContent(pairs);
+
+            HttpRequestMessage message = SetMessage("get", content, url);
+
+            var response = this.client.SendAsync(message).Result;
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            ApiResponse apiResponse = JsonConvert.DeserializeObject<CartResponse>(result);
+
+            return apiResponse;
+
+        }
+
         public HttpRequestMessage SetMessage(string method, FormUrlEncodedContent content, string url )
         {
             return new HttpRequestMessage

@@ -20,10 +20,12 @@ Auth
 ## Server github link:
 https://github.com/Kelkifa/xamarin-server-food
 
-## API Food schema:
+## API Food schema
+Food
 ```js
 const foods = new Schema(
     {
+        _id: { type: String },
         name: { type: String },
         type: { type: String },
         image: { type: String },
@@ -34,4 +36,15 @@ const foods = new Schema(
         minMass: { type: String, default: "0kg" },
         maxMass: { type: String, default: "0kg" }
     },
+```
+
+Cart
+```js
+const carts = new Schema(
+    {
+        _id: { type: String },
+        food: { type: Food },
+        soLuong: {type: Number}
+    }
+)
 ```

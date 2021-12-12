@@ -35,6 +35,7 @@ namespace Food.DiscoverTabbedPages
             txtUnit.Text = food.unit;
             txtProd.Text = food.production;
             srcImg.Source = food.image;
+            Title = food.name;
 
             txtTotalCount.Text = "1";
             txtTotalCost.Text = food.cost.ToString();

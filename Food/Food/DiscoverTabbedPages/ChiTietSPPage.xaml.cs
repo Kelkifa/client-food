@@ -28,7 +28,7 @@ namespace Food.DiscoverTabbedPages
         void DataInit()
         {
             txtName.Text = food.name;
-            txtCost.Text = food.cost.ToString();
+            txtCost.Text = ConvertCost(food.cost);
             txtDes.Text = food.description;
             txtMax.Text = food.maxMass;
             txtMin.Text = food.minMass;
@@ -38,23 +38,43 @@ namespace Food.DiscoverTabbedPages
             Title = food.name;
 
             txtTotalCount.Text = "1";
-            txtTotalCost.Text = food.cost.ToString();
-        }
-        private void cmdAddToCart_Clicked(object sender, EventArgs e)
-        {
-            // Add to cart handle
+            txtTotalCost.Text = ConvertCost(food.cost);
         }
 
         private void cmdAddCount_Clicked(object sender, EventArgs e)
         {
             txtTotalCount.Text = (int.Parse(txtTotalCount.Text) + 1).ToString();
-            txtTotalCost.Text = (int.Parse(txtTotalCount.Text) * food.cost).ToString();
+            txtTotalCost.Text = ConvertCost(int.Parse(txtTotalCount.Text) * food.cost);
         }
 
         private void cmdSubCount_Clicked(object sender, EventArgs e)
         {
             txtTotalCount.Text = (int.Parse(txtTotalCount.Text) - 1).ToString();
-            txtTotalCost.Text = (int.Parse(txtTotalCount.Text) * food.cost).ToString();
+            txtTotalCost.Text = ConvertCost(int.Parse(txtTotalCount.Text) * food.cost);
+        }
+
+        string ConvertCost(int cost)
+        {
+            return cost.ToString("N0") + "đ";
+        }
+
+        private async void cmdAddToCart_Clicked(object sender, EventArgs e)
+        {
+            int soLuong = int.Parse(txtTotalCount.Text);
+            string foodId = this.food._id;
+
+            ApiCall api = new ApiCall();
+
+            ApiResponse apiResponse = await api.fetchAddToCartAsync(soLuong, foodId);
+
+            if (apiResponse.success)
+            {
+                _ = DisplayAlert("Thong bao", "Thêm thành công", "OK");
+            }
+            else
+            {
+                _ = DisplayAlert("Thong bao", apiResponse.message, "OK");
+            }
         }
     }
 }

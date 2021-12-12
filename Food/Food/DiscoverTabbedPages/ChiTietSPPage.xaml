@@ -100,7 +100,7 @@
                     <Button x:Name="cmdAddCount" HeightRequest="60" Clicked="cmdAddCount_Clicked" CornerRadius="15" BorderWidth="2"
                             BackgroundColor="Silver" Text="+" TextColor="White" WidthRequest="60"/>
                 </StackLayout>
-                
+
                 <Button x:Name="cmdAddToCart" HeightRequest="60" Clicked="cmdAddToCart_Clicked" CornerRadius="15" BorderWidth="2"
                         BackgroundColor="LightGreen" Text="Thêm vào giỏ" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
                         HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,20,0" WidthRequest="180"/>

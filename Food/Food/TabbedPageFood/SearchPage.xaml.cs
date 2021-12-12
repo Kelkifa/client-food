@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Food.DiscoverTabbedPages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,12 @@ namespace Food.TabbedPageFood
             }
 
             lstProducts.ItemsSource = foodList;
+        }
+
+        private void lstProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Food selectedFood = (Food)lstProducts.SelectedItem;
+            Navigation.PushAsync(new ChiTietSPPage(selectedFood));
         }
     }
 }

@@ -17,7 +17,7 @@
             <SearchBar x:Name="inputSearch" Placeholder="Tìm kiếm sản phẩm" PlaceholderColor="#333" CancelButtonColor="Orange"
                        HorizontalTextAlignment="Center" TextChanged="Search_TextChanged"  />
             <Label x:Name="txtNotifice"  Text="Không tìm thấy" FontSize="16" HorizontalTextAlignment="Center" IsVisible="False"/>
-            <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstProducts" >
+            <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstProducts" SelectionChanged="lstProducts_SelectionChanged" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="5" Spacing="0">

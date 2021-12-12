@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Food.DiscoverTabbedPages.ChiTietSPPage"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <Grid Padding="20,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="srcImg" Aspect="Fill" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                           VerticalOptions="Center" HorizontalOptions="Center"
+                           />
+                    <Label x:Name="txtName" FontSize="Large" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                           VerticalOptions="Center" HorizontalOptions="Center"
+                           />
+                    <Label x:Name="txtCost" FontSize="Medium" FontAttributes="Bold" TextColor="Orange" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                           VerticalOptions="Center" HorizontalOptions="Center"
+                           />
+                    <Label x:Name="txtUnit" FontSize="Small" TextColor="Silver" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                           VerticalOptions="Center" HorizontalOptions="Center"
+                           />
+
+                    <Label Text="GIAO SỚM NHẤT" FontSize="Small" TextColor="Silver" Grid.Row="4" Grid.Column="0"
+                           VerticalOptions="Center" HorizontalOptions="Start" Margin="0,20,0,0"
+                           />
+                    <Label Text="Trong 1 giờ" FontSize="Small" TextColor="LightGreen" Grid.Row="4" Grid.Column="1"
+                           VerticalOptions="Center" HorizontalOptions="Start" Margin="0,20,0,0"
+                           />
+                    <Label Text="MUA TỐI ĐA" FontSize="Small" TextColor="Silver" Grid.Row="5" Grid.Column="0"
+                           VerticalOptions="Center" HorizontalOptions="Start"
+                           />
+                    <Label x:Name="txtMax" FontSize="Small" TextColor="Black" Grid.Row="5" Grid.Column="1"
+                           VerticalOptions="Center" HorizontalOptions="Start"
+                           />
+                    <Label Text="MUA TỐI THIỂU" FontSize="Small" TextColor="Silver" Grid.Row="6" Grid.Column="0"
+                           VerticalOptions="Center" HorizontalOptions="Start"
+                           />
+                    <Label x:Name="txtMin" FontSize="Small" TextColor="Black" Grid.Row="6" Grid.Column="1"
+                           VerticalOptions="Center" HorizontalOptions="Start"
+                           />
+                    <Label Text="XUẤT XỨ" FontSize="Small" TextColor="Silver" Grid.Row="7" Grid.Column="0"
+                           VerticalOptions="Center" HorizontalOptions="Start"
+                           />
+                    <Label x:Name="txtProd" FontSize="Small" TextColor="Black" Grid.Row="7" Grid.Column="1"
+                           VerticalOptions="Center" HorizontalOptions="Start"
+                           />
+                    <Label Text="GIÁ HIỂN THỊ" FontSize="Small" TextColor="Silver" Grid.Row="8" Grid.Column="0"
+                           VerticalOptions="Center" HorizontalOptions="Start"
+                           />
+                    <Label Text="Giá bình ổn" FontSize="Small" TextColor="Black" Grid.Row="8" Grid.Column="1"
+                           VerticalOptions="Center" HorizontalOptions="Start"
+                           />
+
+                    <Label x:Name="txtDes" FontSize="Medium" TextColor="Black" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"
+                            VerticalOptions="Center" HorizontalOptions="Start" Margin="0,20,0,0" LineHeight="1.2"
+                           />
+                </Grid>
+            </ScrollView>
+            <Grid Padding="20,10,0,20" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="0" Grid.Row="0" OutlineColor="Black" CornerRadius="15" 
+                       HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="90" HeightRequest="15">
+                    <Label x:Name="txtTotalCount" FontSize="Small"  
+                            TextColor="Black" HorizontalTextAlignment="Center" 
+                          />
+                </Frame>
+                
+                <Label x:Name="txtTotalCost" FontSize="Medium" 
+                       TextColor="Black"
+                       Grid.Column="1" Grid.Row="0" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,0,20,0"/>
+                
+                <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Start">
+                    <Button x:Name="cmdSubCount" HeightRequest="60" Clicked="cmdSubCount_Clicked" CornerRadius="15" BorderWidth="2"
+                            BackgroundColor="Silver" Text="-" TextColor="White" WidthRequest="60"/>
+                    <Button x:Name="cmdAddCount" HeightRequest="60" Clicked="cmdAddCount_Clicked" CornerRadius="15" BorderWidth="2"
+                            BackgroundColor="Silver" Text="+" TextColor="White" WidthRequest="60"/>
+                </StackLayout>
+                
+                <Button x:Name="cmdAddToCart" HeightRequest="60" Clicked="cmdAddToCart_Clicked" CornerRadius="15" BorderWidth="2"
+                        BackgroundColor="LightGreen" Text="Thêm vào giỏ" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                        HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,20,0" WidthRequest="180"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

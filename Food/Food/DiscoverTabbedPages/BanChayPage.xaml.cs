@@ -55,7 +55,7 @@ namespace Food.DiscoverTabbedPages
         private void lstBanChay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Food selectedFood = (Food)lstBanChay.SelectedItem;
-            // Navigator to detail page
+            Navigation.PushAsync(new ChiTietSPPage(selectedFood));
         }
     }
 }

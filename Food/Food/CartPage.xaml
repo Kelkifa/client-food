@@ -12,8 +12,33 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="{Binding _id}"/>
-                                <Label Text="{Binding food.name}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding food.image}" Grid.Row="0" Grid.Column="0"
+                                           Grid.RowSpan="2"></Image>
+
+                                    <Label Text="{Binding food.name}"  Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" 
+                                           HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large" TextColor="#000"/>
+
+                                    <Label Text="{Binding food.unit}" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center" FontAttributes="Italic" FontSize="Medium" TextColor="#333" />
+
+                                    <Label Text="{Binding food.cost}" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large" TextColor="Green" />
+
+                                    <Image Source="bin.png" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"
+                                           PropertyChanged="Image_PropertyChanged"/>
+                                </Grid>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

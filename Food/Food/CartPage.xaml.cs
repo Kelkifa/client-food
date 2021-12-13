@@ -19,6 +19,11 @@ namespace Food
             InitFoodList();
         }
 
+        void CartInit()
+        {
+
+        }
+
         async void InitFoodList()
         {
             ApiCall api = new ApiCall();
@@ -29,6 +34,11 @@ namespace Food
             {
                 lstCart.ItemsSource = cartResponse.response;
             }
+
+        }
+
+        private void Image_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
 
         }
     }

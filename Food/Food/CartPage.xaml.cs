@@ -24,7 +24,6 @@ namespace Food
             ApiCall api = new ApiCall();
 
             CartResponse cartResponse = await api.fetchCartAsync();
-
             if (cartResponse.success)
             {
                 lstCart.ItemsSource = cartResponse.response;

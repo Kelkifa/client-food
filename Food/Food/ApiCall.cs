@@ -88,7 +88,7 @@ namespace Food
 
             var pairs = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("foodId", foodId),
+                new KeyValuePair<string, string>("food", foodId),
                 new KeyValuePair<string, string>("soLuong", soLuong.ToString()),
             };
 

@@ -1,4 +1,5 @@
 ﻿using Food.ApiResponseClass;
+using Food.DiscoverTabbedPages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,7 @@ namespace Food.TaiKhoanTabbedpages
             {
                 ApiCall.userId = apiResponse.response;
             _ = DisplayAlert("Thong bao", "Đăng nhập thành công", "OK");
+                Navigation.PushAsync(new TabbedPageContainer());
             }
             else
             {

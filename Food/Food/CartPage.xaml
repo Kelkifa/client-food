@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.CartPage"
+             xmlns:FoodConverter="clr-namespace:Food.Converters" 
              Title="Giỏ Hàng"
              >
+    <ContentPage.Resources>
+        <FoodConverter:CostConverter x:Key="costConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Label FontSize="Title" TextColor="Black" HorizontalOptions="Center" Text="Giỏ Hàng"/>
@@ -12,8 +16,40 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="{Binding _id}"/>
-                                <Label Text="{Binding food.name}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="50" ></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding food.image}" Grid.Row="0" Grid.Column="0"
+                                           Grid.RowSpan="2"></Image>
+
+                                    <Label Text="{Binding food.name}"  Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" 
+                                           HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Medium" TextColor="#000"/>
+
+                                    <Label Text="Số lương" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center"
+                                           HorizontalOptions="Start" FontAttributes="Italic" FontSize="Medium" TextColor="#333" />
+                                           
+                                    <Label Text="{Binding soLuong}" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center" 
+                                               HorizontalOptions="Center" FontAttributes="Italic" FontSize="Medium" TextColor="#333" />
+                                    
+                                    <Label Text="{Binding food.unit}" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="End" FontAttributes="Italic" FontSize="Medium" TextColor="#333" />
+
+                                    <Label Text="{Binding food.cost, Converter={StaticResource costConverter}}" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" VerticalTextAlignment="Center"
+                                               HorizontalOptions="End"
+                                               FontAttributes="Bold" FontSize="Medium" TextColor="Green" />
+
+                                    <Image Source="bin.png" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"
+                                           PropertyChanged="Image_PropertyChanged"/>
+                                </Grid>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

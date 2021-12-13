@@ -10,5 +10,7 @@ namespace Food
 
         public Food food { get; set; }
         public int soLuong { get; set; }
+
+        public bool isChecked { get; set; } = false;
     }
 }

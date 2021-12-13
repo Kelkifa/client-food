@@ -106,6 +106,31 @@ namespace Food
 
         }
 
+        public async Task<CartResponse> fetchRemoveCartListAsync(List<String> cartIdList)
+        {
+            string url = "api/cart/remove";
+
+            var jsonData = JsonConvert.SerializeObject(cartIdList);
+
+            var pairs = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("cartIdList", jsonData),
+            };
+
+            FormUrlEncodedContent content = new FormUrlEncodedContent(pairs);
+
+            HttpRequestMessage message = SetMessage("post", content, url);
+
+            var response = this.client.SendAsync(message).Result;
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            CartResponse apiResponse = JsonConvert.DeserializeObject<CartResponse>(result);
+
+            return apiResponse;
+
+        }
+
         public HttpRequestMessage SetMessage(string method, FormUrlEncodedContent content, string url )
         {
             return new HttpRequestMessage

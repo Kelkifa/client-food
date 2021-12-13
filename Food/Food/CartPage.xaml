@@ -2,24 +2,90 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.CartPage"
+             xmlns:FoodConverter="clr-namespace:Food.Converters" 
              Title="Giỏ Hàng"
              >
+    <ContentPage.Resources>
+        <FoodConverter:CostConverter x:Key="costConverter"/>
+        <FoodConverter:TotalCostFromSoLuongConverter x:Key="costSoLuongConverter" />
+        <FoodConverter:DiscountCoverter x:Key="discountConverter"/>
+        <FoodConverter:IsShowCostConverter x:Key="costIsShowConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label FontSize="Title" TextColor="Black" HorizontalOptions="Center" Text="Giỏ Hàng"/>
-            <ListView x:Name="lstCart">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Giỏ Hàng" FontSize="Title" TextColor="Black" FontAttributes="Bold"
+                       Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"
+                       />
+
+                <Button x:Name="btnDelete" Text="Xoá" FontSize="16" TextColor="Blue" BorderColor="Transparent" Background="Transparent" Clicked="btnDelete_Clicked"
+                       Grid.Column="2" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center"
+                       />
+            </Grid>
+            <ListView x:Name="lstCart" RowHeight="90">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding _id}"/>
-                                <Label Text="{Binding food.name}" />
-                            </StackLayout>
+                        <ViewCell >
+                            <Grid >
+                                <Grid.RowDefinitions >
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="85"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Color="Aqua" IsChecked="{Binding isChecked, Mode=TwoWay}"/>
+
+                                <Image Source="{Binding food.image}" Aspect="AspectFill" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
+
+                                <StackLayout  Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand" 
+                                              Grid.Row="0" Grid.Column="2"
+                                              > 
+                                    <Label Text="{Binding food.name}" FontAttributes="Bold" TextColor="Black" FontSize="16" 
+                                    />
+                                    <Label Text="{Binding food.unit}" FontAttributes="Italic" FontSize="14"
+                                    />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" VerticalOptions="Center" >
+                                    <Label Text="Số lượng:" />
+                                    <Label Text="{Binding soLuong}" />
+                                    <Label Text="{Binding food.discount, Converter={StaticResource discountConverter}}" IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
+                                           Background="Orange" FontAttributes="Bold" TextColor="White" Padding="5, 0" />
+                                </StackLayout>
+
+
+                                <Label FontAttributes="Bold" FontSize="Medium" TextColor="Green" 
+                                    Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" HorizontalOptions="End" Padding="0, 0, 5, 0" VerticalOptions="Center"
+                                    >
+                                    <Label.Text>
+                                        <MultiBinding Converter="{StaticResource costSoLuongConverter}">
+                                            <Binding Path="food.cost" />
+                                            <Binding Path="soLuong" />
+                                            <Binding Path="food.discount" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label x:Name="txtSum" Text="Tổng tiển: 0" FontSize="Large" />
+            <Button Text="btn" x:Name="btnCheck" Clicked="btnCheck_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

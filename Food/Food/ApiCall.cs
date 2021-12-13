@@ -88,7 +88,7 @@ namespace Food
 
             var pairs = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("foodId", foodId),
+                new KeyValuePair<string, string>("food", foodId),
                 new KeyValuePair<string, string>("soLuong", soLuong.ToString()),
             };
 
@@ -101,6 +101,31 @@ namespace Food
             string result = await response.Content.ReadAsStringAsync();
 
             ApiResponse apiResponse = JsonConvert.DeserializeObject<CartResponse>(result);
+
+            return apiResponse;
+
+        }
+
+        public async Task<CartResponse> fetchRemoveCartListAsync(List<String> cartIdList)
+        {
+            string url = "api/cart/remove";
+
+            var jsonData = JsonConvert.SerializeObject(cartIdList);
+
+            var pairs = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("cartIdList", jsonData),
+            };
+
+            FormUrlEncodedContent content = new FormUrlEncodedContent(pairs);
+
+            HttpRequestMessage message = SetMessage("post", content, url);
+
+            var response = this.client.SendAsync(message).Result;
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            CartResponse apiResponse = JsonConvert.DeserializeObject<CartResponse>(result);
 
             return apiResponse;
 

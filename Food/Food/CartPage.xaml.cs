@@ -62,6 +62,7 @@ namespace Food
 
                 if (apiResponse.success)
                 {
+                    _ = DisplayAlert("Thong bao", "Xóa thành công", "OK");
                     _ = Navigation.PushAsync(new CartPage());
                 }
                 else

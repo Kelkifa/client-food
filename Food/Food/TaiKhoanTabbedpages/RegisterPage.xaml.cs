@@ -40,10 +40,8 @@ namespace Food.TaiKhoanTabbedpages
             bool flagPassword = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiPassword, passwordEntry.Text);
             bool flagConfirmPassword = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiConfiPassword, confirmpasswordEntry.Text);
             bool flagFullName = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiFullName, fullNameEntry.Text);
-            bool flagTelephone = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiTelephone, telephoneEntry.Text);
-            bool flagAddress = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiAddress, addressEntry.Text);
 
-            if (flagUser || flagPassword || flagConfirmPassword || flagFullName || flagTelephone || flagAddress) return;
+            if (flagUser || flagPassword || flagConfirmPassword || flagFullName) return;
             //if (IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiPassword, passwordEntry.Text)) return;
             //if (IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiConfiPassword, confirmpasswordEntry.Text)) return;
 
@@ -57,7 +55,13 @@ namespace Food.TaiKhoanTabbedpages
             ApiCall apiCall = new ApiCall();
 
 
-            ApiResponse apiResponse = await apiCall.fetchRegisterAsync(userNameEntry.Text, passwordEntry.Text);
+            ApiResponse apiResponse = await apiCall.fetchRegisterAsync(
+                fullNameEntry.Text, 
+                addressEntry.Text, 
+                telephoneEntry.Text, 
+                userNameEntry.Text, 
+                passwordEntry.Text
+            );
 
             _ = DisplayAlert("Thong bao", apiResponse.message, "OK");
             /*

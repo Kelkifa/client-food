@@ -9,26 +9,87 @@
                 <Setter Property="TextColor" Value="Red"/>
                 <Setter Property="Padding" Value="5, 0"/>
             </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
 
-        <AbsoluteLayout>
-            <FlexLayout IsVisible="True" JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Stretch" Padding="5, 0">
-                <Image Source="slide1.jpg" FlexLayout.AlignSelf="Center" BackgroundColor="Transparent" />
-                
-                <Entry x:Name="userNameEntry" ReturnType="Next" MaxLength="10" Placeholder="User Name" 
-                       FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" Keyboard="Text"  />
-                <Label IsVisible="false" Text="Ban chau nhap " x:Name="txtNotiUsername"/>
+        <RelativeLayout >
+            <Image Source="bgfood.jpg" Aspect="Fill" 
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                    />
+            <FlexLayout IsVisible="True" JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Stretch" Padding="5, 0"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                        >
+                <Entry x:Name="fullNameEntry" Placeholder="Tên đầy đủ">
+                    <Entry.PlaceholderColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="Black"></On>
+                            <On Platform="Android" Value="Black"></On>
+                        </OnPlatform>
+                    </Entry.PlaceholderColor>
+                </Entry>
+                <Label IsVisible="false" Text="Bạn chưa nhập tên" x:Name="txtNotiFullName"/>
 
-                <Entry x:Name="passwordEntry" ReturnType="Next" MaxLength="12" IsPassword="True" Placeholder="Password" 
-                       FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" />
-                <Label IsVisible="false" Text="Ban chau nhap " x:Name="txtNotiPassword"/>
+                <Entry x:Name="telephoneEntry" Placeholder="Số điện thoại" >
+                    <Entry.PlaceholderColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="Black"></On>
+                            <On Platform="Android" Value="Black"></On>
+                        </OnPlatform>
+                    </Entry.PlaceholderColor>
 
-                <Entry x:Name="confirmpasswordEntry" ReturnType="Next" MaxLength="12" IsPassword="True" Placeholder="Confirm Password" 
-                       FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" />
-                <Label IsVisible="false" Text="Ban chau nhap " x:Name="txtNotiConfiPassword"/>
+                </Entry>
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiTelephone"/>
+
+                <Entry x:Name="addressEntry" Placeholder="Địa chỉ" >
+                    <Entry.PlaceholderColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="Black"></On>
+                            <On Platform="Android" Value="Black"></On>
+                        </OnPlatform>
+                    </Entry.PlaceholderColor>
+                </Entry>
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiAddress"/>
+
+                <Entry x:Name="userNameEntry" Placeholder="Tài Khoản">
+                    <Entry.PlaceholderColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="Black"></On>
+                            <On Platform="Android" Value="Black"></On>
+                        </OnPlatform>
+                    </Entry.PlaceholderColor>
+                </Entry>
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiUsername"/>
+
+                <Entry x:Name="passwordEntry" Placeholder="Mật khẩu" IsPassword="True"
+                       >
+                    <Entry.PlaceholderColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="Black"></On>
+                            <On Platform="Android" Value="Black"></On>
+                        </OnPlatform>
+                    </Entry.PlaceholderColor>
+                </Entry>
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiPassword"/>
+
+                <Entry x:Name="confirmpasswordEntry" Placeholder="Xác nhận mật khẩu" IsPassword="True"
+                       >
+                    <Entry.PlaceholderColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="Black"></On>
+                            <On Platform="Android" Value="Black"></On>
+                        </OnPlatform>
+                    </Entry.PlaceholderColor>
+                </Entry>
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiConfiPassword"/>
 
 
                 <Label x:Name="txtNotifiForm" IsVisible="false" FontSize="17" />
@@ -39,6 +100,6 @@
                 <Button x:Name="Login" Clicked="Login_Clicked" FontSize="Medium" TextColor="White" BorderColor="Black" BackgroundColor="#00b33c" 
                         Text="Login" CornerRadius="5"  FlexLayout.AlignSelf="Stretch" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
             </FlexLayout>
-        </AbsoluteLayout>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

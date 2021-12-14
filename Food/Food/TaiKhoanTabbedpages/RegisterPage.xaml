@@ -20,15 +20,27 @@
                 
                 <Entry x:Name="userNameEntry" ReturnType="Next" MaxLength="10" Placeholder="User Name" 
                        FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" Keyboard="Text"  />
-                <Label IsVisible="false" Text="Ban chau nhap " x:Name="txtNotiUsername"/>
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiUsername"/>
 
                 <Entry x:Name="passwordEntry" ReturnType="Next" MaxLength="12" IsPassword="True" Placeholder="Password" 
                        FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" />
-                <Label IsVisible="false" Text="Ban chau nhap " x:Name="txtNotiPassword"/>
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiPassword"/>
 
                 <Entry x:Name="confirmpasswordEntry" ReturnType="Next" MaxLength="12" IsPassword="True" Placeholder="Confirm Password" 
                        FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" />
-                <Label IsVisible="false" Text="Ban chau nhap " x:Name="txtNotiConfiPassword"/>
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiConfiPassword"/>
+
+                <Entry x:Name="fullNameEntry" ReturnType="Next" MaxLength="12" IsPassword="True" Placeholder="Full Name" 
+                       FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" />
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiFullName"/>
+
+                <Entry x:Name="telephoneEntry" ReturnType="Next" MaxLength="12" IsPassword="True" Placeholder="Telephone Number" 
+                       FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" />
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiTelephone"/>
+
+                <Entry x:Name="addressEntry" ReturnType="Next" MaxLength="12" IsPassword="True" Placeholder="Your Address" 
+                       FontSize="Medium" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand"  TextColor="Black" />
+                <Label IsVisible="false" Text="Ban chua nhap " x:Name="txtNotiAddress"/>
 
 
                 <Label x:Name="txtNotifiForm" IsVisible="false" FontSize="17" />

@@ -39,8 +39,11 @@ namespace Food.TaiKhoanTabbedpages
             bool flagUser = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiUsername, userNameEntry.Text);
             bool flagPassword = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiPassword, passwordEntry.Text);
             bool flagConfirmPassword = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiConfiPassword, confirmpasswordEntry.Text);
+            bool flagFullName = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiFullName, fullNameEntry.Text);
+            bool flagTelephone = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiTelephone, telephoneEntry.Text);
+            bool flagAddress = IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiAddress, addressEntry.Text);
 
-            if (flagUser || flagPassword || flagConfirmPassword) return;
+            if (flagUser || flagPassword || flagConfirmPassword || flagFullName || flagTelephone || flagAddress) return;
             //if (IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiPassword, passwordEntry.Text)) return;
             //if (IsErrorAndSetNotifice("Bạn chưa nhập trường này", txtNotiConfiPassword, confirmpasswordEntry.Text)) return;
 

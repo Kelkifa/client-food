@@ -21,6 +21,22 @@ namespace Food
             InitFoodList();
         }
 
+        public CartPage(bool isReload)
+        {
+            InitializeComponent();
+            InitFoodList();
+
+            if (isReload)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                var _lastPage = _navigation.NavigationStack.LastOrDefault();
+                //Remove last page
+                _navigation.RemovePage(_lastPage);
+
+                _navigation.PopAsync();
+            }
+        }
+
         async void InitFoodList()
         {
             ApiCall api = new ApiCall();
@@ -62,7 +78,7 @@ namespace Food
 
                 if (apiResponse.success)
                 {
-                    _ = Navigation.PushAsync(new CartPage());
+                    lstCart.ItemsSource = apiResponse.response;
                 }
                 else
                 {

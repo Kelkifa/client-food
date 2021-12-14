@@ -31,7 +31,7 @@
                        Grid.Column="2" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center"
                        />
             </Grid>
-            <ListView x:Name="lstCart" RowHeight="90">
+            <ListView x:Name="lstCart" RowHeight="90" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -53,7 +53,7 @@
 
                                 <StackLayout  Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand" 
                                               Grid.Row="0" Grid.Column="2"
-                                              > 
+                                              >
                                     <Label Text="{Binding food.name}" FontAttributes="Bold" TextColor="Black" FontSize="16" 
                                     />
                                     <Label Text="{Binding food.unit}" FontAttributes="Italic" FontSize="14"
@@ -85,7 +85,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="btn" x:Name="btnCheck" Clicked="btnCheck_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

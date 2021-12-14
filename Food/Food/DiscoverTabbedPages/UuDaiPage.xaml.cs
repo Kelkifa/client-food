@@ -40,12 +40,13 @@ namespace Food.DiscoverTabbedPages
                 txtEmptyNotifice.IsVisible = false;
             }
 
-            lstBanChay.ItemsSource = foodList;
+            lstBanChay1.ItemsSource = foodList;
         }
 
-        private void lstBanChay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lstBanChay1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Food selectedFood = (Food)lstBanChay1.SelectedItem;
+            Navigation.PushAsync(new ChiTietSPPage(selectedFood));
         }
     }
 }

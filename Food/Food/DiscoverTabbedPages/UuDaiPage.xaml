@@ -15,7 +15,7 @@
         <StackLayout>
             <Label x:Name="txtLoadNotifice"  Text="Loading ..." FontSize="16" HorizontalTextAlignment="Center" IsVisible="True"/>
             <Label x:Name="txtEmptyNotifice"  Text="Không tìm thấy" FontSize="16" HorizontalTextAlignment="Center" IsVisible="False"/>
-            <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstBanChay" SelectionChanged="lstBanChay_SelectionChanged" SelectionMode="Single">
+            <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstBanChay1" SelectionChanged="lstBanChay1_SelectionChanged" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="5" Spacing="0">

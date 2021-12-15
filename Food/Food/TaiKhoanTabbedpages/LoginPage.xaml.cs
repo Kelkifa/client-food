@@ -50,7 +50,7 @@ namespace Food.TaiKhoanTabbedpages
             {
                 ApiCall.userId = apiResponse.response;
             _ = DisplayAlert("Thong bao", "Đăng nhập thành công", "OK");
-                Navigation.PushAsync(new TabbedPageContainer());
+                _ = Navigation.PushAsync(new TabbedPageContainer());
             }
             else
             {

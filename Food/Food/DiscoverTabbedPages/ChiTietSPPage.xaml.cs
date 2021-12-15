@@ -28,29 +28,31 @@ namespace Food.DiscoverTabbedPages
         void DataInit()
         {
             txtName.Text = food.name;
-            txtCost.Text = ConvertCost(food.cost);
             txtDes.Text = food.description;
             txtMax.Text = food.maxMass;
             txtMin.Text = food.minMass;
             txtUnit.Text = food.unit;
             txtProd.Text = food.production;
+            txtSalePrice.Text = ConvertCost(food.cost - food.cost * food.discount / 100);
             srcImg.Source = food.image;
             Title = food.name;
 
+
+            txtTotalCost.Text = txtSalePrice.Text;
             txtTotalCount.Text = "1";
-            txtTotalCost.Text = ConvertCost(food.cost);
+            txtCost.BindingContext = food;
         }
 
         private void cmdAddCount_Clicked(object sender, EventArgs e)
         {
             txtTotalCount.Text = (int.Parse(txtTotalCount.Text) + 1).ToString();
-            txtTotalCost.Text = ConvertCost(int.Parse(txtTotalCount.Text) * food.cost);
+            txtTotalCost.Text = ConvertCost(int.Parse(txtTotalCount.Text) * int.Parse(txtSalePrice.Text));
         }
 
         private void cmdSubCount_Clicked(object sender, EventArgs e)
         {
             txtTotalCount.Text = (int.Parse(txtTotalCount.Text) - 1).ToString();
-            txtTotalCost.Text = ConvertCost(int.Parse(txtTotalCount.Text) * food.cost);
+            txtTotalCost.Text = ConvertCost(int.Parse(txtTotalCount.Text) * int.Parse(txtSalePrice.Text));
         }
 
         string ConvertCost(int cost)

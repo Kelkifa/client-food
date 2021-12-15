@@ -85,6 +85,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <Label x:Name="amount" FontSize="Large" FontAttributes="Bold" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

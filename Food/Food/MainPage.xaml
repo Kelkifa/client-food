@@ -10,7 +10,7 @@
     </StackLayout>
 
     <ContentPage.Content xmlns:Tabbed="clr-namespace:Food">
-
+        
     </ContentPage.Content>
 
 </ContentPage>

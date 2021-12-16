@@ -63,22 +63,17 @@ namespace Food.TaiKhoanTabbedpages
                 passwordEntry.Text
             );
 
-            _ = DisplayAlert("Thong bao", apiResponse.message, "OK");
-            /*
-            if (response.IsSuccessStatusCode)
-            {
-                if(apiResponse.success == true)
-                {
-                    DisplayAlert("Thong bao", "Đăng ký thành công" , "OK");
-                    Navigation.PushAsync(new LoginPage());
-                }
-                else
-                {
-                    DisplayAlert("Thong bao", apiResponse.message, "OK");
-
-                }
+            if(apiResponse.success){
+                _ = DisplayAlert("Thông báo", "Đăng ký thành công", "OK");
+                _ = Navigation.PushAsync(new LoginPage());
             }
-            */
+            else
+            {
+                _ = DisplayAlert("Thông báo", "Đăng ký Không thành công", "OK");
+
+            }
+
+
         }
 
         private void Login_Clicked(object sender, EventArgs e)

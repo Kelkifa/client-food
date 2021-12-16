@@ -12,5 +12,6 @@ namespace Food
         public int soLuong { get; set; }
 
         public bool isChecked { get; set; } = false;
+
     }
 }

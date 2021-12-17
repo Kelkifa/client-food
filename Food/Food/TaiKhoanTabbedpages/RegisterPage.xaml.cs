@@ -64,21 +64,7 @@ namespace Food.TaiKhoanTabbedpages
             );
 
             _ = DisplayAlert("Thong bao", apiResponse.message, "OK");
-                    Navigation.PushAsync(new LoginPage());
-            /*
-            if (response.IsSuccessStatusCode)
-            {
-                if(apiResponse.success == true)
-                {
-                    DisplayAlert("Thong bao", "Đăng ký thành công" , "OK");
-                }
-                else
-                {
-                    DisplayAlert("Thong bao", apiResponse.message, "OK");
-
-                }
-            }
-            */
+            _ = Navigation.PushAsync(new LoginPage());
         }
 
         private void Login_Clicked(object sender, EventArgs e)

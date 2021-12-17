@@ -63,7 +63,7 @@ namespace Food.TaiKhoanTabbedpages
                 passwordEntry.Text
             );
 
-            if (apiResponse.success){
+            if(apiResponse.success){
                 _ = DisplayAlert("Thông báo", "Đăng ký thành công", "OK");
                 _ = Navigation.PushAsync(new LoginPage());
             }

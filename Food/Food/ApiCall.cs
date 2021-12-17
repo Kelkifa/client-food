@@ -41,12 +41,15 @@ namespace Food
             return apiResponse;
         }
 
-        public async Task<ApiResponse> fetchRegisterAsync(string username, string password)
+        public async Task<ApiResponse> fetchRegisterAsync(string fullname, string address, string sdt ,string username, string password)
         {
             string url = "api/auth/register";
 
             var pairs = new List<KeyValuePair<string, string>>
             {
+                new KeyValuePair<string, string>("fullname", fullname),
+                new KeyValuePair<string, string>("address", address),
+                new KeyValuePair<string, string>("sdt", sdt),
                 new KeyValuePair<string, string>("username", username),
                 new KeyValuePair<string, string>("password", password),
             };

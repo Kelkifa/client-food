@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,6 +9,15 @@ namespace Food
     {
         public App()
         {
+            Database database = new Database();
+            database.CreateDatabase();
+
+            List<User> userList = database.GetUser();
+            if (userList != null)
+            {
+                if (userList.Count != 0)
+                    ApiCall.userId = userList[0]._id;
+            }
             InitializeComponent();
 
             MainPage = new NavigationPage(new TabbedPageContainer());

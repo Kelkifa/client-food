@@ -48,9 +48,16 @@ namespace Food.TaiKhoanTabbedpages
 
             if(apiResponse.success == true)
             {
-                ApiCall.userId = apiResponse.response;
-            _ = DisplayAlert("Thong bao", "Đăng nhập thành công", "OK");
+                Database database = new Database();
+                if (database.AddUser(apiResponse.response)){
+                ApiCall.userId = apiResponse.response._id;
+                _ = DisplayAlert("Thong bao", "Đăng nhập thành công", "OK");
                 _ = Navigation.PushAsync(new TabbedPageContainer());
+                }
+                else
+                {
+                    _ = DisplayAlert("Thong bao", "Đăng nhập không thành công", "OK");
+                }
             }
             else
             {

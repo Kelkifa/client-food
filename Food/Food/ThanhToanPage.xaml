@@ -3,42 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.ThanhToanPage"
              Title="Thanh Toán">
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="labelTitle">
+            <Setter Property="TextColor" Value="Gray"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Padding" Value="12, 0"/>
+        </Style>
+        <Style TargetType="Label" x:Key="labelTitleIn">
+            <Setter Property="TextColor" Value="Gray" />
+        </Style>
+        <Style TargetType="Label" x:Key="labelText">
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="Padding" Value="12, 0"/>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <CollectionView x:Name="lstOrder">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Hình thức thanh toán" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-                                   FontSize="Medium" FontAttributes="Bold"
-                                   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HeightRequest="50"
-                                   TextColor="#aaa9a7" BackgroundColor="#f1f0eb" Padding="15,0,0,0"/>
+        <StackLayout BackgroundColor="LightGray">
+            <Label Text="Hình thức thanh toán" Style="{StaticResource labelTitle}"/>
+            <Grid BackgroundColor="White" Padding="10, 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-                            <Label Text="Trả tiền khi nhận hàng" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                                   HorizontalOptions="Start" VerticalOptions="Center"
-                                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                                   TextColor="Black" FontAttributes="Bold" FontSize="16" Margin="15,0,0,0" HeightRequest="50"/>
+                <CheckBox x:Name="checkboxMethod" IsChecked="True"
+                    Grid.Row="0" Grid.Column="0"/>
+                <Label Text="Trả tiền khi thanh toán" Style="{StaticResource labelText}"
+                       Grid.Row="0" Grid.Column="1" VerticalOptions="Center"/>
+            </Grid>
+            <Label Text="Thông tin người dùng" Style="{StaticResource labelTitle}"/>
+            <StackLayout BackgroundColor="White" Padding="10, 10">
+                <Label Text="TÊN NGƯỜI NHẬN" Style="{StaticResource labelTitleIn}"/>
+                <Entry x:Name="entryFullname" Placeholder="Nhập tên người nhận hàng"/>
 
-                            <Label Text="Người nhận hàng" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                                   FontSize="Medium" FontAttributes="Bold"
-                                   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HeightRequest="50"
-                                   TextColor="#aaa9a7" BackgroundColor="#f1f0eb" Padding="15,0,0,0"/>
+                <Label Text="ĐỊA CHỈ" Style="{StaticResource labelTitleIn}"/>
+                <Entry x:Name="entryAddress" Placeholder="Nhập địa chỉ giao hàng" />
 
-                            <Label Text="{Binding user.fullname}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                                   HorizontalOptions="Start" VerticalOptions="Center"
-                                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                                   TextColor="Black" FontAttributes="Bold" FontSize="16" Margin="15,0,0,0" HeightRequest="50"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                <Label Text="SỐ ĐIỆN THOẠI" Style="{StaticResource labelTitleIn}"/>
+                <Entry x:Name="entrySdt" Placeholder="Số điện thoại" />
+            </StackLayout>
+
+            <Button Text="Thanh Toán" x:Name="btnThanhToan" Clicked="btnThanhToan_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

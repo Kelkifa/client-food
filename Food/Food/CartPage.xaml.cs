@@ -109,7 +109,21 @@ namespace Food
 
         private void thanhToanBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ThanhToanPage());
+            if (this.cartList == null) return;
+
+            List<Cart> selectedCarts = new List<Cart>();
+
+            foreach(Cart cart in this.cartList)
+            {
+                if (cart.isChecked) selectedCarts.Add(cart);
+            }
+
+            if(selectedCarts.Count == 0)
+            {
+                DisplayAlert("Thông báo", "Bạn chưa chọn đồ ăn nào", "Đồng ý");
+            }
+
+            Navigation.PushAsync(new ThanhToanPage(selectedCarts));
         }
     }
 }

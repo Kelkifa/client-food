@@ -6,6 +6,6 @@ namespace Food.ApiResponseClass
 {
     public class LoginRes : ApiResponse
     {
-        public string response { get; set; }
+        public User response { get; set; }
     }
 }

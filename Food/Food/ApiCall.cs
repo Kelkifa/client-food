@@ -134,12 +134,12 @@ namespace Food
 
         }
 
-        public async Task<ApiResponse> fetchCreateOrderAsync(List<Cart> cartList, string address, string sdt)
+        public async Task<ApiResponse> fetchCreateOrderAsync(List<string> cartIdList, string address, string sdt)
         {
             string url = "api/order/create";
 
-            string jsonCartList = JsonConvert.SerializeObject(cartList);
-
+            string jsonCartList = JsonConvert.SerializeObject(cartIdList);
+            
             var pairs = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("cartList", jsonCartList),
@@ -157,6 +157,7 @@ namespace Food
             ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(result);
 
             return apiResponse;
+
         }
 
         public async Task<OrderResponse> fetchGetOrderAsync()

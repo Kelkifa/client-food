@@ -1,9 +1,6 @@
-﻿
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,22 +12,60 @@ namespace Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ThanhToanPage : ContentPage
     {
+        List<Cart> cartList = new List<Cart>();
+        User user = new User();
         public ThanhToanPage()
         {
             InitializeComponent();
-            InitialData();
         }
 
-        async void InitialData()
+        public ThanhToanPage(List<Cart> cartList)
         {
+            this.cartList = cartList;
+            GetUserInfo();
+            InitializeComponent();
+            InitData();
+        }
 
-            HttpClient http = new HttpClient();
+        void InitData()
+        {
+            entryFullname.Text = user.fullname;
+            entryAddress.Text = user.address;
+            entrySdt.Text = user.sdt;
+        }
+        public void GetUserInfo()
+        {
+            Database database = new Database();
 
-            string response = await http.GetStringAsync("https://xamarin-food.herokuapp.com/api/auth/register");
+            List<User> storedUserList = database.GetUser();
+            if(storedUserList != null)
+            {
+                if(storedUserList.Count != 0)
+                {
+                    this.user = storedUserList[0];
+                }
+            }
+        }
 
-            List<Order> OrderList = JsonConvert.DeserializeObject<List<Order>>(response);
+        private async void btnThanhToan_Clicked(object sender, EventArgs e)
+        {
+            ApiCall api = new ApiCall();
 
-            lstOrder.ItemsSource = OrderList;
+            List<string> cartIdList = new List<string>();
+            foreach(Cart cart in this.cartList)
+            {
+                cartIdList.Add(cart._id);
+            }
+            ApiResponse apiResponse = await api.fetchCreateOrderAsync(cartIdList, entryAddress.Text, entrySdt.Text);
+
+            if (apiResponse.success)
+            {
+                _ = DisplayAlert("Thông báo", "Đặt hàng thành công", "OK");
+            }
+            else
+            {
+                _ = DisplayAlert("Thông báo", apiResponse.message, "OK");
+            }
         }
     }
 }

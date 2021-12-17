@@ -102,6 +102,11 @@
                 <Button x:Name="thanhToanBtn" Grid.Row="0" Grid.Column="1" Text="Thanh Toán" BackgroundColor="Red" 
                         HorizontalOptions="End" VerticalOptions="End"  
                         TextColor="White" Clicked="thanhToanBtn_Clicked" />
+                
+                <!-- Backdrop -->
+                
+                <!-- Bottom Drawer-->
+
             </Grid>
         </StackLayout>
     </ContentPage.Content>

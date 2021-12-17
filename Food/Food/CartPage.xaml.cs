@@ -58,7 +58,7 @@ namespace Food
             {
                 totalCost += ((cart.food.cost - cart.food.cost * cart.food.discount / 100) * cart.soLuong);
             }
-            amount.Text = "Thanh tien: " + ConvertCost(totalCost);
+            amount.Text = "Tổng tiền: " + ConvertCost(totalCost);
 
 
         }
@@ -106,6 +106,11 @@ namespace Food
             }
 
 
+        }
+
+        private void thanhToanBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ThanhToanPage());
         }
     }
 }

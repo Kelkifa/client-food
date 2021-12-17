@@ -73,6 +73,8 @@ namespace Food.TaiKhoanTabbedpages
                 _ = DisplayAlert("Thông báo", "Đăng ký Không thành công", "OK");
 
             }
+
+
         }
 
         private void Login_Clicked(object sender, EventArgs e)

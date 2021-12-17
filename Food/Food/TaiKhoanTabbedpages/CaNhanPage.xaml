@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Food.TaiKhoanTabbedpages.CaNhanPage">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Button" x:Key="btnAuth">
+            <Setter Property="Margin" Value="50,0"/>
+            <Setter Property="CornerRadius" Value="30" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+        <Style TargetType="Label" x:Key="labelTitleTop">
+            <Setter Property="TextColor" Value="Gray" />
+            <Setter Property="WidthRequest" Value="130" />
+            <Setter Property="VerticalTextAlignment" Value="End" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+        </Style>
+        <Style TargetType="Label" x:Key="labelValueTop">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="VerticalTextAlignment" Value="End" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="FontSize" Value="Large" />
+        </Style>
+        <Style TargetType="Button" x:Key="btnBottom">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontSize" Value="Large" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackLayout x:Name="layoutInfo" IsVisible="True" Padding="7,5" Spacing="20"
+                         Grid.Row="0"
+                         >
+                <Button WidthRequest="55" HeightRequest="55" HorizontalOptions="Center" Text="H" CornerRadius="100" x:Name="btnAvatar" FontSize="Large"
+                            />
+                <Label Text="Huan Pham" FontAttributes="Bold"/>
+                
+                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                    <Label Text="Họ và Tên:" Style="{StaticResource labelTitleTop}" />
+                    <Label Text="Phạm Long Huân" Style="{StaticResource labelValueTop}" />
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Địa chị:" Style="{StaticResource labelTitleTop}" />
+                    <Label Text="123123/213" Style="{StaticResource labelValueTop}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Số điện thoại:" Style="{StaticResource labelTitleTop}" />
+                    <Label Text="1231239812490" Style="{StaticResource labelValueTop}" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout x:Name="layoutAuto" Spacing="20" IsVisible="False"
+                         Grid.Row="0"
+                         >
+                <Label Text="Đăng nhập để sử dụng các tính năng như đặt hàng."
+                       FontSize="Large" Padding="50, 20, 50, 0"
+                       />
+                <Button Text="Đăng Nhập" Style="{StaticResource btnAuth}" BackgroundColor="YellowGreen"
+                        x:Name="btnLogin" Clicked="btnLogin_Clicked"
+                        />
+                <Button Text="Đăng Ký" Style="{StaticResource btnAuth}"  BackgroundColor="Orange"
+                        x:Name="btnRegister" Clicked="btnRegister_Clicked" />
+            </StackLayout>
+            <StackLayout Grid.Row="1" IsVisible="True" x:Name="layoutBottom">
+                <Button Text="Đơn Hàng Của Tôi" Style="{StaticResource btnBottom}" x:Name="btnMyOrder" Clicked="btnMyOrder_Clicked"/>
+                <Button Text="Đăng Xuất" Style="{StaticResource btnBottom}" x:Name="btnLogOut" Clicked="btnLogOut_Clicked"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

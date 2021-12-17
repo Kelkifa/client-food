@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Food.TaiKhoanTabbedpages.LoginPage">
+             x:Class="Food.TaiKhoanTabbedpages.LoginPage"
+             Title="Đăng Nhập">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
@@ -28,10 +29,10 @@
                 <Label x:Name="txtPassNoti" IsVisible="false"/>
 
                 <Button x:Name="LogIn" Clicked="LogIn_Clicked" FontSize="Medium" TextColor="White" BorderColor="Black" BackgroundColor="#00b33c"  
-                        CornerRadius="5" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand" Text="Log In"/>
+                        CornerRadius="5" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand" Text="Đăng Nhập"/>
 
                 <Button x:Name="Register" Clicked="Register_Clicked"  FontSize="Medium" TextColor="White" BorderColor="Black" BackgroundColor="Red"  
-                        CornerRadius="5" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand" Text="Register"/>
+                        CornerRadius="5" FlexLayout.AlignSelf="Stretch"  HorizontalOptions="CenterAndExpand" Text="Đăng Ký"/>
             </FlexLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

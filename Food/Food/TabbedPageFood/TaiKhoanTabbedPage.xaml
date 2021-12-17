@@ -8,5 +8,5 @@
 
     <ContentPage  Title="Đơn hàng" />
     <ContentPage Title="Yêu thích" />
-    <pages:LoginPage Title="Cá Nhân" />
+    <pages:CaNhanPage Title="Cá Nhân"  />
 </TabbedPage>

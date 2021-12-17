@@ -81,10 +81,28 @@
                                 </Label>
 
                             </Grid>
+                            
                         </ViewCell>
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="290"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="amount" FontSize="Medium" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" 
+                       VerticalTextAlignment="Center" BackgroundColor="Green" TextColor="Yellow"
+                       HorizontalTextAlignment="Center" Margin="0,0,-10,0"/>
+                
+                <Button x:Name="thanhToanBtn" Grid.Row="0" Grid.Column="1" Text="Thanh Toán" BackgroundColor="Red" 
+                        HorizontalOptions="End" VerticalOptions="End"  
+                        TextColor="White" Clicked="thanhToanBtn_Clicked" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

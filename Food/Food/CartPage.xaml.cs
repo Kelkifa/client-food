@@ -37,6 +37,11 @@ namespace Food
             }
         }
 
+        string ConvertCost(int cost)
+        {
+            return cost.ToString("N0") + "đ";
+        }
+
         async void InitFoodList()
         {
             ApiCall api = new ApiCall();
@@ -47,7 +52,15 @@ namespace Food
                 this.cartList = cartResponse.response;
                 lstCart.ItemsSource = this.cartList;
             }
-            
+
+            int totalCost = 0;
+            foreach(Cart cart in cartList)
+            {
+                totalCost += ((cart.food.cost - cart.food.cost * cart.food.discount / 100) * cart.soLuong);
+            }
+            amount.Text = "Tổng tiền: " + ConvertCost(totalCost);
+
+
         }
 
         private void Image_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -93,6 +106,11 @@ namespace Food
             }
 
 
+        }
+
+        private void thanhToanBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ThanhToanPage());
         }
     }
 }

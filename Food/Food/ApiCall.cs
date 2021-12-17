@@ -41,15 +41,12 @@ namespace Food
             return apiResponse;
         }
 
-        public async Task<ApiResponse> fetchRegisterAsync(string fullname, string address, string sdt, string username, string password)
+        public async Task<ApiResponse> fetchRegisterAsync(string username, string password)
         {
             string url = "api/auth/register";
 
             var pairs = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("fullname", fullname),
-                new KeyValuePair<string, string>("address", address),
-                new KeyValuePair<string, string>("sdt", sdt),
                 new KeyValuePair<string, string>("username", username),
                 new KeyValuePair<string, string>("password", password),
             };
@@ -132,6 +129,46 @@ namespace Food
 
             return apiResponse;
 
+        }
+
+        public async Task<ApiResponse> fetchCreateOrderAsync(List<Cart> cartList, string address, string sdt)
+        {
+            string url = "api/order/create";
+
+            string jsonCartList = JsonConvert.SerializeObject(cartList);
+
+            var pairs = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("cartList", jsonCartList),
+                new KeyValuePair<string, string>("address", address),
+                new KeyValuePair<string, string>("sdt", sdt),
+            };
+            FormUrlEncodedContent content = new FormUrlEncodedContent(pairs);
+
+            HttpRequestMessage message = SetMessage("post", content, url);
+
+            var response = this.client.SendAsync(message).Result;
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(result);
+
+            return apiResponse;
+        }
+
+        public async Task<OrderResponse> fetchGetOrderAsync()
+        {
+            string url = "api/order/get";
+
+            HttpRequestMessage message = SetMessage("get", null, url);
+
+            var response = this.client.SendAsync(message).Result;
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            OrderResponse apiResponse = JsonConvert.DeserializeObject<OrderResponse>(result);
+
+            return apiResponse;
         }
 
         public HttpRequestMessage SetMessage(string method, FormUrlEncodedContent content, string url )

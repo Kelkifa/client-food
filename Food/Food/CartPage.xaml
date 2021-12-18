@@ -47,7 +47,9 @@
                                     <ColumnDefinition Width="85"/>
                                 </Grid.ColumnDefinitions>
 
-                                <CheckBox Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Color="Aqua" IsChecked="{Binding isChecked, Mode=TwoWay}"/>
+                                <CheckBox Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Color="Aqua" IsChecked="{Binding isChecked, Mode=TwoWay}" 
+                                          CheckedChanged="CheckBox_CheckedChanged"
+                                           />
 
                                 <Image Source="{Binding food.image}" Aspect="AspectFill" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
 
@@ -81,13 +83,12 @@
                                 </Label>
 
                             </Grid>
-                            
+
                         </ViewCell>
-                        
+
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Chọn hàng " x:Name="btnCheck" Clicked="btnCheck_Clicked" BackgroundColor="Yellow"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>

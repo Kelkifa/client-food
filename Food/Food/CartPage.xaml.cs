@@ -1,4 +1,5 @@
 ﻿using Food.ApiResponseClass;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Food
     {
 
         List<Cart> cartList = null;
+        private int totalCost = 0;
         public CartPage()
         {
             InitializeComponent();
@@ -63,24 +65,6 @@ namespace Food
 
         }
 
-        private void btnCheck_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Thong baos", cartList[0].isChecked ? "checked":"not checked", "OK");
-            List<String> selectedCartId = new List<string>();
-
-            int totalCost = 0;
-            foreach (Cart cart in this.cartList)
-            {
-                if (cart.isChecked) selectedCartId.Add(cart._id);
-            }
-            if (selectedCartId.Count != 0)
-            {
-                List<Cart> getCart = cartList.Where(x => selectedCartId.Contains(x._id)).ToList();
-                totalCost = getCart.Sum(i => (i.food.cost - i.food.cost * i.food.discount / 100) * i.soLuong);
-                //cart.food.cost - (cart.food.cost * cart.food.discount / 100)) *cart.soLuong
-            }
-            amount.Text = "Tổng tiền: " + ConvertCost(totalCost);
-        }
 
         private async void btnDelete_Clicked(object sender, EventArgs e)
         {
@@ -116,6 +100,11 @@ namespace Food
 
         }
 
+        private int CaculateCost(int cost, int discount, int soLuong)
+        {
+            return (cost - discount * cost /100) * soLuong;
+        }
+
         private void thanhToanBtn_Clicked(object sender, EventArgs e)
         {
             if (this.cartList == null) return;
@@ -133,6 +122,22 @@ namespace Food
             }
 
             Navigation.PushAsync(new ThanhToanPage(selectedCarts));
+        }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            int tongTien = 0;
+            foreach(Cart cart in this.cartList)
+            {
+                if (cart.isChecked)
+                {
+                    tongTien += CaculateCost(cart.food.cost, cart.food.discount, cart.soLuong);
+                }
+            }
+            
+            this.totalCost = tongTien;
+
+            amount.Text = "Tổng tiền: " + ConvertCost(this.totalCost);
         }
     }
 }

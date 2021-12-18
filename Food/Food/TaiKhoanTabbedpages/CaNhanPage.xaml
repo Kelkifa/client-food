@@ -46,22 +46,23 @@
             <StackLayout x:Name="layoutInfo" Padding="7,5" Spacing="20" IsVisible="True"
                          Grid.Row="0"
                          >
-                <Button WidthRequest="55" HeightRequest="55" HorizontalOptions="Center" Text="H" CornerRadius="100" x:Name="btnAvatar" FontSize="Large"
+                <Button WidthRequest="55" HeightRequest="55" HorizontalOptions="Center" CornerRadius="100" FontSize="Large" 
+                        x:Name="btnAvatar"
                             />
-                <Label Text="Huan Pham" FontAttributes="Bold"/>
+                <Label x:Name="txtUsername" FontAttributes="Bold"/>
                 
                 <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
                     <Label Text="Họ và Tên:" Style="{StaticResource labelTitleTop}" />
-                    <Label Text="Phạm Long Huân" Style="{StaticResource labelValueTop}" />
+                    <Label x:Name="txtFullname" Style="{StaticResource labelValueTop}" />
                 </StackLayout>
                 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Địa chị:" Style="{StaticResource labelTitleTop}" />
-                    <Label Text="123123/213" Style="{StaticResource labelValueTop}" />
+                    <Label x:Name="txtDiaChi" Style="{StaticResource labelValueTop}" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Số điện thoại:" Style="{StaticResource labelTitleTop}" />
-                    <Label Text="1231239812490" Style="{StaticResource labelValueTop}" />
+                    <Label x:Name="txtSdt" Style="{StaticResource labelValueTop}" />
                 </StackLayout>
             </StackLayout>
             <StackLayout x:Name="layoutAuth" Spacing="20" IsVisible="False"

@@ -15,6 +15,23 @@ namespace Food.TaiKhoanTabbedpages
         public CaNhanPage()
         {
             InitializeComponent();
+            InitView();
+        }
+
+        void InitView()
+        {
+            if (ApiCall.userId != null)
+            {
+                layoutInfo.IsVisible = true;
+                layoutAuth.IsVisible = false;
+                layoutBottom.IsVisible = true;
+            }
+            else
+            {
+                layoutInfo.IsVisible = false;
+                layoutAuth.IsVisible = true;
+                layoutBottom.IsVisible = false;
+            }
         }
 
         private void btnLogin_Clicked(object sender, EventArgs e)
@@ -34,7 +51,10 @@ namespace Food.TaiKhoanTabbedpages
 
         private void btnLogOut_Clicked(object sender, EventArgs e)
         {
-
+            ApiCall.userId = null;
+            InitView();
+            Database database = new Database();
+            database.RemoveUser();
         }
     }
 }

@@ -29,8 +29,9 @@
         </Style>
         <Style TargetType="Button" x:Key="btnBottom">
             <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="TextColor" Value="Black" />
-            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Gray" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -42,7 +43,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <StackLayout x:Name="layoutInfo" IsVisible="True" Padding="7,5" Spacing="20"
+            <StackLayout x:Name="layoutInfo" Padding="7,5" Spacing="20" IsVisible="True"
                          Grid.Row="0"
                          >
                 <Button WidthRequest="55" HeightRequest="55" HorizontalOptions="Center" Text="H" CornerRadius="100" x:Name="btnAvatar" FontSize="Large"
@@ -63,7 +64,7 @@
                     <Label Text="1231239812490" Style="{StaticResource labelValueTop}" />
                 </StackLayout>
             </StackLayout>
-            <StackLayout x:Name="layoutAuto" Spacing="20" IsVisible="False"
+            <StackLayout x:Name="layoutAuth" Spacing="20" IsVisible="False"
                          Grid.Row="0"
                          >
                 <Label Text="Đăng nhập để sử dụng các tính năng như đặt hàng."
@@ -75,7 +76,7 @@
                 <Button Text="Đăng Ký" Style="{StaticResource btnAuth}"  BackgroundColor="Orange"
                         x:Name="btnRegister" Clicked="btnRegister_Clicked" />
             </StackLayout>
-            <StackLayout Grid.Row="1" IsVisible="True" x:Name="layoutBottom">
+            <StackLayout Grid.Row="1"  x:Name="layoutBottom" IsVisible="True">
                 <Button Text="Đơn Hàng Của Tôi" Style="{StaticResource btnBottom}" x:Name="btnMyOrder" Clicked="btnMyOrder_Clicked"/>
                 <Button Text="Đăng Xuất" Style="{StaticResource btnBottom}" x:Name="btnLogOut" Clicked="btnLogOut_Clicked"/>
             </StackLayout>

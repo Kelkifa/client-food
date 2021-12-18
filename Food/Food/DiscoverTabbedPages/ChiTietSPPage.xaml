@@ -2,7 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.DiscoverTabbedPages.ChiTietSPPage"
+             xmlns:FoodConverter="clr-namespace:Food.Converters"
              >
+    <ContentPage.Resources>
+        <FoodConverter:CostConverter x:Key="costConverter"/>
+        <FoodConverter:IsShowCostConverter x:Key="costIsShowConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
@@ -30,42 +35,48 @@
                     <Label x:Name="txtName" FontSize="Large" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                            VerticalOptions="Center" HorizontalOptions="Center"
                            />
-                    <Label x:Name="txtCost" FontSize="Medium" FontAttributes="Bold" TextColor="Orange" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                           VerticalOptions="Center" HorizontalOptions="Center"
-                           />
-                    <Label x:Name="txtUnit" FontSize="Small" TextColor="Silver" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                    <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                 VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label FontSize="Large" TextColor="Green" FontAttributes="Bold" x:Name="txtSalePrice"/>
+
+                        <Label x:Name="txtCost" Text="{Binding cost, Converter={StaticResource costConverter}}"   
+                                       IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
+                                       FontSize="Medium" TextDecorations="Strikethrough"
+                                />
+                    </StackLayout>
+                    <Label x:Name="txtUnit" FontSize="Small" TextColor="Gray" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                            VerticalOptions="Center" HorizontalOptions="Center"
                            />
 
-                    <Label Text="GIAO SỚM NHẤT" FontSize="Small" TextColor="Silver" Grid.Row="4" Grid.Column="0"
+                    <Label Text="GIAO SỚM NHẤT" FontSize="Small" TextColor="Gray" Grid.Row="4" Grid.Column="0"
                            VerticalOptions="Center" HorizontalOptions="Start" Margin="0,20,0,0"
                            />
-                    <Label Text="Trong 1 giờ" FontSize="Small" TextColor="LightGreen" Grid.Row="4" Grid.Column="1"
+                    <Label Text="Trong 1 giờ" FontSize="Small" FontAttributes="Bold" TextColor="LightGreen" Grid.Row="4" Grid.Column="1"
                            VerticalOptions="Center" HorizontalOptions="Start" Margin="0,20,0,0"
                            />
-                    <Label Text="MUA TỐI ĐA" FontSize="Small" TextColor="Silver" Grid.Row="5" Grid.Column="0"
+                    <Label Text="MUA TỐI ĐA" FontSize="Small" TextColor="Gray" Grid.Row="5" Grid.Column="0"
                            VerticalOptions="Center" HorizontalOptions="Start"
                            />
                     <Label x:Name="txtMax" FontSize="Small" TextColor="Black" Grid.Row="5" Grid.Column="1"
-                           VerticalOptions="Center" HorizontalOptions="Start"
+                           VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"
                            />
-                    <Label Text="MUA TỐI THIỂU" FontSize="Small" TextColor="Silver" Grid.Row="6" Grid.Column="0"
+                    <Label Text="MUA TỐI THIỂU" FontSize="Small" TextColor="Gray" Grid.Row="6" Grid.Column="0"
                            VerticalOptions="Center" HorizontalOptions="Start"
                            />
                     <Label x:Name="txtMin" FontSize="Small" TextColor="Black" Grid.Row="6" Grid.Column="1"
-                           VerticalOptions="Center" HorizontalOptions="Start"
+                           VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"
                            />
-                    <Label Text="XUẤT XỨ" FontSize="Small" TextColor="Silver" Grid.Row="7" Grid.Column="0"
+                    <Label Text="XUẤT XỨ" FontSize="Small" TextColor="Gray" Grid.Row="7" Grid.Column="0"
                            VerticalOptions="Center" HorizontalOptions="Start"
                            />
                     <Label x:Name="txtProd" FontSize="Small" TextColor="Black" Grid.Row="7" Grid.Column="1"
-                           VerticalOptions="Center" HorizontalOptions="Start"
+                           VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"
                            />
-                    <Label Text="GIÁ HIỂN THỊ" FontSize="Small" TextColor="Silver" Grid.Row="8" Grid.Column="0"
+                    <Label Text="GIÁ HIỂN THỊ" FontSize="Small" TextColor="Gray" Grid.Row="8" Grid.Column="0"
                            VerticalOptions="Center" HorizontalOptions="Start"
                            />
                     <Label Text="Giá bình ổn" FontSize="Small" TextColor="Black" Grid.Row="8" Grid.Column="1"
-                           VerticalOptions="Center" HorizontalOptions="Start"
+                           VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"
                            />
 
                     <Label x:Name="txtDes" FontSize="Medium" TextColor="Black" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"
@@ -89,16 +100,16 @@
                             TextColor="Black" HorizontalTextAlignment="Center" 
                           />
                 </Frame>
-                
+
                 <Label x:Name="txtTotalCost" FontSize="Medium" 
                        TextColor="Black"
                        Grid.Column="1" Grid.Row="0" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,0,20,0"/>
-                
+
                 <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Start">
                     <Button x:Name="cmdSubCount" HeightRequest="60" Clicked="cmdSubCount_Clicked" CornerRadius="15" BorderWidth="2"
-                            BackgroundColor="Silver" Text="-" TextColor="White" WidthRequest="60"/>
+                            BackgroundColor="Gray" Text="-" TextColor="White" WidthRequest="60"/>
                     <Button x:Name="cmdAddCount" HeightRequest="60" Clicked="cmdAddCount_Clicked" CornerRadius="15" BorderWidth="2"
-                            BackgroundColor="Silver" Text="+" TextColor="White" WidthRequest="60"/>
+                            BackgroundColor="Gray" Text="+" TextColor="White" WidthRequest="60"/>
                 </StackLayout>
 
                 <Button x:Name="cmdAddToCart" HeightRequest="60" Clicked="cmdAddToCart_Clicked" CornerRadius="15" BorderWidth="2"

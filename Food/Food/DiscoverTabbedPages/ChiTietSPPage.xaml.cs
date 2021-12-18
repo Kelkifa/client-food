@@ -14,6 +14,7 @@ namespace Food.DiscoverTabbedPages
     public partial class ChiTietSPPage : ContentPage
     {
         Food food;
+        int soLuong = 1;
         public ChiTietSPPage()
         {
             InitializeComponent();
@@ -28,33 +29,49 @@ namespace Food.DiscoverTabbedPages
         void DataInit()
         {
             txtName.Text = food.name;
-            txtCost.Text = ConvertCost(food.cost);
             txtDes.Text = food.description;
             txtMax.Text = food.maxMass;
             txtMin.Text = food.minMass;
             txtUnit.Text = food.unit;
             txtProd.Text = food.production;
+            txtSalePrice.Text = ConvertCost(food.cost - food.cost * food.discount / 100);
             srcImg.Source = food.image;
             Title = food.name;
 
-            txtTotalCount.Text = "1";
-            txtTotalCost.Text = ConvertCost(food.cost);
+
+            txtTotalCost.Text = txtSalePrice.Text;
+            txtTotalCount.Text = this.soLuong.ToString();
+            txtCost.BindingContext = food;
         }
 
         private void cmdAddCount_Clicked(object sender, EventArgs e)
         {
-            txtTotalCount.Text = (int.Parse(txtTotalCount.Text) + 1).ToString();
-            txtTotalCost.Text = ConvertCost(int.Parse(txtTotalCount.Text) * food.cost);
+            this.soLuong += 1;
+            txtTotalCount.Text = this.soLuong.ToString();
+
+            CaculateAndChangeTotalCost();
         }
 
         private void cmdSubCount_Clicked(object sender, EventArgs e)
         {
-            txtTotalCount.Text = (int.Parse(txtTotalCount.Text) - 1).ToString();
-            txtTotalCost.Text = ConvertCost(int.Parse(txtTotalCount.Text) * food.cost);
+            if(this.soLuong <= 1)
+            {
+                return;
+            }
+
+            this.soLuong -= 1;
+            txtTotalCount.Text= this.soLuong.ToString();
+
+            CaculateAndChangeTotalCost();
         }
 
-        string ConvertCost(int cost)
+        void CaculateAndChangeTotalCost()
         {
+            int cost = this.food.cost * (1 - this.food.discount/100) * this.soLuong;
+            txtTotalCost.Text = ConvertCost(cost);
+        }
+        string ConvertCost(int cost)
+        { 
             return cost.ToString("N0") + "đ";
         }
 
@@ -70,7 +87,7 @@ namespace Food.DiscoverTabbedPages
             if (apiResponse.success)
             {
                 _ = DisplayAlert("Thong bao", "Thêm thành công", "OK");
-                Navigation.PushAsync(new CartPage());
+                _ = Navigation.PushAsync(new CartPage());
             }
             else
             {

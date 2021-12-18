@@ -41,7 +41,6 @@ namespace Food
         {
             return cost.ToString("N0") + "đ";
         }
-
         async void InitFoodList()
         {
             ApiCall api = new ApiCall();
@@ -54,10 +53,6 @@ namespace Food
             }
 
             int totalCost = 0;
-            foreach(Cart cart in cartList)
-            {
-                totalCost += ((cart.food.cost - cart.food.cost * cart.food.discount / 100) * cart.soLuong);
-            }
             amount.Text = "Tổng tiền: " + ConvertCost(totalCost);
 
 
@@ -71,6 +66,20 @@ namespace Food
         private void btnCheck_Clicked(object sender, EventArgs e)
         {
             DisplayAlert("Thong baos", cartList[0].isChecked ? "checked":"not checked", "OK");
+            List<String> selectedCartId = new List<string>();
+
+            int totalCost = 0;
+            foreach (Cart cart in this.cartList)
+            {
+                if (cart.isChecked) selectedCartId.Add(cart._id);
+            }
+            if (selectedCartId.Count != 0)
+            {
+                List<Cart> getCart = cartList.Where(x => selectedCartId.Contains(x._id)).ToList();
+                totalCost = getCart.Sum(i => (i.food.cost - i.food.cost * i.food.discount / 100) * i.soLuong);
+                //cart.food.cost - (cart.food.cost * cart.food.discount / 100)) *cart.soLuong
+            }
+            amount.Text = "Tổng tiền: " + ConvertCost(totalCost);
         }
 
         private async void btnDelete_Clicked(object sender, EventArgs e)

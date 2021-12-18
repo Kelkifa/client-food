@@ -87,6 +87,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Text="Chọn hàng " x:Name="btnCheck" Clicked="btnCheck_Clicked" BackgroundColor="Yellow"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>

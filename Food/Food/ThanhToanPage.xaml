@@ -52,7 +52,8 @@
                 <Entry x:Name="entrySdt" Placeholder="Số điện thoại" />
             </StackLayout>
 
-            <Button Text="Thanh Toán" x:Name="btnThanhToan" Clicked="btnThanhToan_Clicked"/>
+            <Button Text="Thanh Toán" x:Name="btnThanhToan" Clicked="btnThanhToan_Clicked"
+                    BackgroundColor="Red" TextColor="White"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

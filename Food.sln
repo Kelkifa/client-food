@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food.Android", "Food\Food.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food.iOS", "Food\Food.iOS\Food.iOS.csproj", "{D6A54DDD-7222-4338-894D-554BF9CF841D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food", "Food\Food\Food.csproj", "{8F1AD403-8A0C-4FEB-AB74-1C5CF4CFCE2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Food", "Food\Food\Food.csproj", "{8F1AD403-8A0C-4FEB-AB74-1C5CF4CFCE2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{54533DB5-EA12-4FA8-A516-388F1F12EE3F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

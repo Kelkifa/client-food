@@ -20,6 +20,11 @@ Auth
 ## Server github link:
 https://github.com/Kelkifa/xamarin-server-food
 
+## Admin Account
+username: Admin
+<br />
+passwrod: 1234
+
 ## API Food schema
 Food
 ```js

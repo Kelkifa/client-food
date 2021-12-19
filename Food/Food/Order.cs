@@ -6,6 +6,7 @@ namespace Food
 {
     public class Order
     {
+        public string _id { get; set; }
         public User user {get;set;}
         public List<Cart> cartList { get; set; }
 

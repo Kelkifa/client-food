@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,8 +60,25 @@ namespace Food.TaiKhoanTabbedpages
                 txtFullname.Text = this.user.fullname;
                 txtDiaChi.Text = this.user.address;
                 txtSdt.Text = this.user.sdt;
+
+                if (this.user.isAdmin)
+                {
+                    btnManageOrder.IsVisible = true;
+                    txtAdmin.IsVisible = true;
+                }
+                else
+                {
+                    btnManageOrder.IsVisible = false;
+                    txtAdmin.IsVisible = false;
+                }
+            }
+            else
+            {
+                btnManageOrder.IsVisible = false;
+                txtAdmin.IsVisible = false;
             }
 
+            
         }
 
         private void btnLogin_Clicked(object sender, EventArgs e)
@@ -80,10 +98,16 @@ namespace Food.TaiKhoanTabbedpages
 
         private void btnLogOut_Clicked(object sender, EventArgs e)
         {
+            this.user = null;
             ApiCall.userId = null;
-            InitView();
             Database database = new Database();
             database.RemoveUser();
+            InitView();
+        }
+
+        private void btnManageOrder_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OrderManagePage());
         }
     }
 }

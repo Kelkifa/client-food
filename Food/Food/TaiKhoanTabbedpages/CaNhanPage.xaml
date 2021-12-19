@@ -30,7 +30,7 @@
         <Style TargetType="Button" x:Key="btnBottom">
             <Setter Property="BackgroundColor" Value="Transparent" />
             <Setter Property="TextColor" Value="Gray" />
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="16" />
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
     </ContentPage.Resources>
@@ -49,7 +49,11 @@
                 <Button WidthRequest="55" HeightRequest="55" HorizontalOptions="Center" CornerRadius="100" FontSize="Large" 
                         x:Name="btnAvatar"
                             />
-                <Label x:Name="txtUsername" FontAttributes="Bold"/>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label x:Name="txtUsername" FontAttributes="Bold"  />
+                    <Label x:Name="txtAdmin" Text="Admin" FontAttributes="Bold" FontSize="12" TextColor="Green" IsVisible="false"/>
+                </StackLayout>
                 
                 <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
                     <Label Text="Họ và Tên:" Style="{StaticResource labelTitleTop}" />
@@ -79,6 +83,7 @@
             </StackLayout>
             <StackLayout Grid.Row="1"  x:Name="layoutBottom" IsVisible="True">
                 <Button Text="Đơn Hàng Của Tôi" Style="{StaticResource btnBottom}" x:Name="btnMyOrder" Clicked="btnMyOrder_Clicked"/>
+                <Button Text="Quản Lý Các Đơn Hàng" Style="{StaticResource btnBottom}" x:Name="btnManageOrder" IsVisible="false" Clicked="btnManageOrder_Clicked"/>
                 <Button Text="Đăng Xuất" Style="{StaticResource btnBottom}" x:Name="btnLogOut" Clicked="btnLogOut_Clicked"/>
             </StackLayout>
         </Grid>

@@ -11,5 +11,8 @@ namespace Food
 
         public string address { get; set; }
         public string sdt { get; set; }
+
+        public string updatedAt { get; set; }
+        public string createdAt { get; set; }
     }
 }

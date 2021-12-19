@@ -4,9 +4,16 @@
              x:Class="Food.TaiKhoanTabbedpages.OrderManagePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="hello" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

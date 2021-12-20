@@ -67,7 +67,7 @@ namespace Food.DiscoverTabbedPages
 
         void CaculateAndChangeTotalCost()
         {
-            int cost = this.food.cost * (1 - this.food.discount/100) * this.soLuong;
+            int cost = (this.food.cost - (this.food.cost * this.food.discount/100)) * this.soLuong;
             txtTotalCost.Text = ConvertCost(cost);
         }
         string ConvertCost(int cost)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Food.ApiResponseClass;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -60,8 +61,11 @@ namespace Food
 
             if (apiResponse.success)
             {
+                OrderResponse orderResponse = await api.fetchGetOrderAsync();
+                Order order = orderResponse.response.LastOrDefault();
                 _ = DisplayAlert("Thông báo", "Đặt hàng thành công", "OK");
                 _ = Navigation.PopAsync();
+                await Navigation.PushAsync(new ChiTietHoaDonPage(order));
             }
             else
             {

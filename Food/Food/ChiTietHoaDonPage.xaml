@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:FoodConverter="clr-namespace:Food.Converters"
              x:Class="Food.ChiTietHoaDonPage"
              Title="Chi tiết đơn hàng">
     <ContentPage.Resources>
+        <FoodConverter:CostConverter x:Key="costConverter"/>
         <Style x:Key="MainCost" TargetType="Label">
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="FontSize" Value="22" />
             <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="Green"/>
         </Style>
         <Style x:Key="DivisionLine" TargetType="Line">
             <Setter Property="TranslationY"      Value="15"/>
@@ -25,9 +28,10 @@
             <Grid RowSpacing="0" RowDefinitions="Auto,Auto,Auto">
 
                 <Frame Grid.Row="0" Margin="30,90,30,0" HeightRequest="100" CornerRadius="15">
-                    <Grid RowDefinitions="Auto,Auto" HorizontalOptions="Center">
+                    <Grid RowDefinitions="Auto,Auto,Auto" HorizontalOptions="Center">
                         <Label x:Name="txtTotalCost" Grid.Row="0" Style="{StaticResource MainCost}" Margin="0,20,0,0"/>
-                        <Line  Grid.Row="1" Style="{StaticResource DivisionLine}" />
+                        <Label x:Name="txtBillId" Grid.Row="1" FontAttributes="Bold" FontSize="14" HorizontalTextAlignment="Center"/>
+                        <Line  Grid.Row="2" Style="{StaticResource DivisionLine}" />
                     </Grid>
                 </Frame>
                 <Image Source="logo.png" TranslationY="-35" Grid.Row="0" HorizontalOptions="Center"
@@ -37,15 +41,15 @@
                     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
 
                         <CollectionView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-15,0,12" VerticalOptions="StartAndExpand"
-                                        VerticalScrollBarVisibility="Never" HeightRequest="150">
+                                        VerticalScrollBarVisibility="Never" HeightRequest="150" x:Name="collectionData">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto">
                                         <Image Source="{Binding food.image}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
-                                               HeightRequest="60" WidthRequest="60" Margin="0,5,0,0"/>
+                                               HeightRequest="70" WidthRequest="70" Margin="0,5,0,0" Aspect="AspectFit"/>
                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding food.name}" FontAttributes="Bold" FontSize="16"/>
-                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding soluong}" FontAttributes="Bold" FontSize="16" TextColor="Silver"/>
-                                        <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Text="{Binding food.cost}" VerticalOptions="Center" FontSize="18" FontAttributes="Bold"
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding soLuong}" FontAttributes="Bold" FontSize="16" TextColor="Silver" VerticalOptions="Center"/>
+                                        <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Text="{Binding food.cost, Converter={StaticResource costConverter}}}" VerticalOptions="Center" FontSize="18" FontAttributes="Bold"
                                                TextColor="Green"/>
                                     </Grid>
                                 </DataTemplate>
@@ -64,7 +68,7 @@
                     </Grid>
                 </Frame>
                 <Frame Grid.Row="2" Margin="30,20,30,0" CornerRadius="15">
-                    <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
                         <Label Grid.Row="0" Grid.Column="0" TextColor="Silver" FontSize="16" Text="Họ Tên" FontAttributes="Bold"
                                VerticalOptions="Center" HorizontalOptions="Start"/>
                         <Label Grid.Row="0" Grid.Column="1" TextColor="#4f4f4f" FontSize="16" x:Name="txtName" FontAttributes="Bold"
@@ -76,6 +80,10 @@
                         <Label Grid.Row="2" Grid.Column="0" TextColor="Silver" FontSize="16" Text="Địa chỉ" FontAttributes="Bold"
                                VerticalOptions="Center" HorizontalOptions="Start"/>
                         <Label Grid.Row="2" Grid.Column="1" TextColor="#4f4f4f" FontSize="16" x:Name="txtAddr" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Grid.Row="3" Grid.Column="0" TextColor="Silver" FontSize="16" Text="Ngày Đặt" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label Grid.Row="3" Grid.Column="1" TextColor="#4f4f4f" FontSize="16" x:Name="txtDate" FontAttributes="Bold"
                                VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Grid>
                 </Frame>

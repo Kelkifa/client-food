@@ -17,20 +17,44 @@ namespace Food.TaiKhoanTabbedpages
         {
             this.order = order;
             InitializeComponent();
+            InitTotalCostAndDiscount();
             InitData();
         }
 
         private void InitData()
         {
-            lstCart.ItemsSource = this.order.cartList;
+            collectionData.ItemsSource = this.order.cartList;
 
-            txtId.Text = this.order._id;
-            txtFullname.Text = this.order.user.fullname;
-            txtAddress.Text = this.order.address;
-            txtSdt.Text = this.order.sdt;
-            txtCreatedAt.Text = this.order.createdAt;
+            txtName.Text = this.order.user.fullname;
+            txtAddr.Text = this.order.address;
+            txtDate.Text = this.order.createdAt;
+            txtPhone.Text = this.order.sdt;
+            
         }
 
+        private void InitTotalCostAndDiscount()
+        {
+            int totalCost = 0;
+            int totalDiscount = 0;
+            foreach(Cart cart in this.order.cartList)
+            {
+                totalCost += CaculateCost(cart.food.cost, cart.food.discount, cart.soLuong);
+                totalDiscount = CaculateDiscount(cart.food.cost, cart.food.discount, cart.soLuong);
+            }
+            txtTotalCost.Text = totalCost.ToString("N0") + " đ";
+            txtTotalCost1.Text = totalCost.ToString("N0") + " đ";
+            txtTotalDiscount.Text = totalDiscount.ToString("N0") + " đ";
+        }
+
+        private int CaculateCost(int cost, int discount, int soLuong)
+        {
+            return (cost - cost * discount / 100) * soLuong;
+        }
+        private int CaculateDiscount(int cost, int discount, int soLuong)
+        {
+            return (cost * discount / 100) * soLuong;
+        }
+        
         private void btnAccept_Clicked(object sender, EventArgs e)
         {
 

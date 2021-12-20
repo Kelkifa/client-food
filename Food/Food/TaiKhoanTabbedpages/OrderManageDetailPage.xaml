@@ -6,165 +6,88 @@
              >
     <ContentPage.Resources>
         <FoodConverter:CostConverter x:Key="costConverter"/>
-        <FoodConverter:TotalCostFromSoLuongConverter x:Key="costSoLuongConverter" />
-        <FoodConverter:DiscountCoverter x:Key="discountConverter"/>
-        <FoodConverter:IsShowCostConverter x:Key="costIsShowConverter" />
-        
-        <Style TargetType="Label">
-            <Setter Property="TextColor" Value="Black"/>
-        </Style>
-        <Style TargetType="Label" x:Key="labelRight">
-            <Setter Property="FontSize" Value="Large" />
-            <Setter Property="VerticalTextAlignment" Value="End" />
-            <Setter Property="TextColor" Value="Black" />
-        </Style>
-        <Style TargetType="Label" x:Key="labelValue">
-            <Setter Property="FontSize" Value="20" />
+        <Style x:Key="MainCost" TargetType="Label">
             <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="VerticalOptions" Value="End" />
-            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="Green"/>
+        </Style>
+        <Style x:Key="DivisionLine" TargetType="Line">
+            <Setter Property="TranslationY"      Value="15"/>
+            <Setter Property="VerticalOptions"   Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="StrokeDashArray"   Value="1,6"/>
+            <Setter Property="X2"                Value="320"/>
+            <Setter Property="StrokeLineCap"     Value="Square"/>
+            <Setter Property="Stroke"            Value="Silver"/>
+            <Setter Property="StrokeThickness"   Value="2"/>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <ScrollView>
+            <Grid RowSpacing="0" RowDefinitions="Auto,Auto,Auto">
 
-            <Label Text="CHI TIẾT ĐƠN HÀNG" FontSize="Title" HorizontalTextAlignment="Center" Padding="0,10"
-                   Grid.Row="0" Grid.Column="0"
-                   />
-            <StackLayout Grid.Row="1" Grid.Column="0">
-                <Grid Padding="0,10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="115"/>
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" Margin="30,90,30,0" HeightRequest="100" CornerRadius="15">
+                    <Grid RowDefinitions="Auto,Auto,Auto" HorizontalOptions="Center">
+                        <Label x:Name="txtTotalCost" Grid.Row="0" Style="{StaticResource MainCost}" Margin="0,20,0,0"/>
+                        <Label x:Name="txtBillId" Grid.Row="1" FontAttributes="Bold" FontSize="14" HorizontalTextAlignment="Center"/>
+                        <Line  Grid.Row="2" Style="{StaticResource DivisionLine}" />
+                    </Grid>
+                </Frame>
+                <Image Source="logo.png" TranslationY="-35" Grid.Row="0" HorizontalOptions="Center"
+                       HeightRequest="90" WidthRequest="90"/>
 
-                    <Label Text="Số hóa đơn: " Style="{StaticResource labelValue}"
-                                   Grid.Row="0" Grid.Column="0"
-                                   />
-                    <Label x:Name="txtId" Style="{StaticResource labelRight}" FontSize="18"
-                                   Grid.Row="0" Grid.Column="1"
-                                   />
+                <Frame Grid.Row="1" Margin="30,-15,30,0" HeightRequest="300" CornerRadius="15">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
 
-                    <Label Text="Khách hàng: " Style="{StaticResource labelValue}"
-                                    Grid.Row="1" Grid.Column="0"
-                                    />
-                    <Label x:Name="txtFullname" Style="{StaticResource labelRight}"
-                                   Grid.Row="1" Grid.Column="1"
-                                   />
+                        <CollectionView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-15,0,12" VerticalOptions="StartAndExpand"
+                                        VerticalScrollBarVisibility="Never" HeightRequest="150" x:Name="collectionData">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                                        <Image Source="{Binding food.image}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                                               HeightRequest="70" WidthRequest="70" Margin="0,5,0,0" Aspect="AspectFit"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding food.name}" FontAttributes="Bold" FontSize="16"/>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding soLuong}" FontAttributes="Bold" FontSize="16" TextColor="Silver" VerticalOptions="Center"/>
+                                        <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Text="{Binding food.cost, Converter={StaticResource costConverter}}" VerticalOptions="Center" FontSize="18" FontAttributes="Bold"
+                                               TextColor="Green"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
 
-                    <Label Text="Dia chi: " Style="{StaticResource labelValue}"
-                                   Grid.Row="2" Grid.Column="0"
-                                   />
-                    <Label x:Name="txtAddress" Style="{StaticResource labelRight}"
-                                   Grid.Row="2" Grid.Column="1"
-                                   />
+                        <Label Grid.Row="2" Grid.Column="0" Text="Tổng Tiền" FontSize="16" TextColor="#4f4f4f" FontAttributes="Bold" Margin="0,0,0,10"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="Giảm Giá" FontSize="16" TextColor="#4f4f4f" FontAttributes="Bold"/>
+                        <Label Grid.Row="2" Grid.Column="1" x:Name="txtTotalCost1" FontSize="18" FontAttributes="Bold" Margin="0,0,0,10" HorizontalOptions="End"
+                               TextColor="Green"/>
+                        <Label Grid.Row="3" Grid.Column="1" x:Name="txtTotalDiscount"   FontSize="18" FontAttributes="Bold" TextColor="Red"
+                               HorizontalOptions="End"/>
+                        <Line  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,15"
+                           Style="{StaticResource DivisionLine}" />
 
-                    <Label Text="Sdt: " Style="{StaticResource labelValue}"
-                                   Grid.Row="3" Grid.Column="0"
-                                   />
-                    <Label x:Name="txtSdt" Style="{StaticResource labelRight}"
-                                    Grid.Row="3" Grid.Column="1"
-                                    />
-
-                    <Label Text="Ngày đặt: " Style="{StaticResource labelValue}"
-                                   Grid.Row="4" Grid.Column="0"
-                                   />
-                    <Label x:Name="txtCreatedAt" Style="{StaticResource labelRight}"
-                                   Grid.Row="4" Grid.Column="1"
-                                   />
-                    <Label Text="Danh Sách Sản phẩm" FontSize="Large" Padding="0,5,0,0"
-                               Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
-                               />
-
-                </Grid>
-                <ListView x:Name="lstCart" RowHeight="80"
-                              Grid.Row="1" Grid.Column="0"
-                                SeparatorColor="Black"
-                              >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell >
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="2*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80" />
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="85"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Image Source="{Binding food.image}" Aspect="AspectFill"
-                                               Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
-
-                                    <StackLayout  Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand" 
-                                                  Grid.Row="0" Grid.Column="1"
-                                                  >
-                                        <Label Text="{Binding food.name}" FontAttributes="Bold" TextColor="Black" FontSize="20" 
-                                        />
-                                        <Label Text="{Binding food.unit}" FontAttributes="Italic" FontSize="16"
-                                        />
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" >
-                                        <Label Text="Số lượng:" FontSize="18" />
-                                        <Label Text="{Binding soLuong}" FontSize="18"/>
-                                        <Label Text="{Binding food.discount, Converter={StaticResource discountConverter}}" IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
-                                               Background="Orange" FontAttributes="Bold" TextColor="White" Padding="5, 0" FontSize="18"/>
-                                    </StackLayout>
-
-                                    <Label FontAttributes="Bold" FontSize="Medium" TextColor="Green"
-                                        Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" HorizontalOptions="End" Padding="0, 0, 5, 0" VerticalOptions="Center" 
-                                        >
-                                        <Label.Text>
-                                            <MultiBinding Converter="{StaticResource costSoLuongConverter}">
-                                                <Binding Path="food.cost" />
-                                                <Binding Path="soLuong" />
-                                                <Binding Path="food.discount" />
-                                            </MultiBinding>
-                                        </Label.Text>
-                                    </Label>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-
-            <Grid Grid.Row="2" Grid.Column="0" ColumnSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-                <Button Text="CHẤP NHẬN" BackgroundColor="LightGreen" x:Name="btnAccept" Clicked="btnAccept_Clicked"
-                        Grid.Row="0" Grid.Column="0"
-                        />
-                <Button Text="TỪ CHỐI" BackgroundColor="IndianRed" x:Name="btnDisagree" Clicked="btnDisagree_Clicked"
-                        Grid.Row="0" Grid.Column="1"
-                        />
+                    </Grid>
+                </Frame>
+                <Frame Grid.Row="2" Margin="30,20,30,0" CornerRadius="15">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
+                        <Label Grid.Row="0" Grid.Column="0" TextColor="Silver" FontSize="16" Text="Họ Tên" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label Grid.Row="0" Grid.Column="1" TextColor="#4f4f4f" FontSize="16" x:Name="txtName" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Grid.Row="1" Grid.Column="0" TextColor="Silver" FontSize="16" Text="Số Điện Thoại" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label Grid.Row="1" Grid.Column="1" TextColor="#4f4f4f" FontSize="16" x:Name="txtPhone" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Grid.Row="2" Grid.Column="0" TextColor="Silver" FontSize="16" Text="Địa chỉ" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label Grid.Row="2" Grid.Column="1" TextColor="#4f4f4f" FontSize="16" x:Name="txtAddr" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Grid.Row="3" Grid.Column="0" TextColor="Silver" FontSize="16" Text="Ngày Đặt" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label Grid.Row="3" Grid.Column="1" TextColor="#4f4f4f" FontSize="16" x:Name="txtDate" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Grid>
+                </Frame>
             </Grid>
-            
-        </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

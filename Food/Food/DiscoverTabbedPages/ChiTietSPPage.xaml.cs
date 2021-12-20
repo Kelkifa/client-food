@@ -87,7 +87,7 @@ namespace Food.DiscoverTabbedPages
             if (apiResponse.success)
             {
                 _ = DisplayAlert("Thong bao", "Thêm thành công", "OK");
-                _ = Navigation.PushAsync(new CartPage());
+                _ = Navigation.PopAsync();
             }
             else
             {

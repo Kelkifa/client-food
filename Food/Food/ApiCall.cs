@@ -175,7 +175,22 @@ namespace Food
             return apiResponse;
         }
 
-        public HttpRequestMessage SetMessage(string method, FormUrlEncodedContent content, string url )
+        public async Task<OrderResponse> fetchAdminGetOrderAsync()
+        {
+            string url = "api/order/getAll";
+
+            HttpRequestMessage message = SetMessage("get", null, url);
+
+            var response = this.client.SendAsync(message).Result;
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            OrderResponse apiResponse = JsonConvert.DeserializeObject<OrderResponse>(result);
+
+            return apiResponse;
+        }
+
+        private HttpRequestMessage SetMessage(string method, FormUrlEncodedContent content, string url )
         {
             return new HttpRequestMessage
             {

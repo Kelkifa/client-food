@@ -12,8 +12,17 @@
         <FoodConverter:IsShowCostConverter x:Key="costIsShowConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" >
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -23,15 +32,25 @@
                     <ColumnDefinition Width="60"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Giỏ Hàng" FontSize="Title" TextColor="Black" FontAttributes="Bold"
-                       Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"
-                       />
+                <Button   x:Name="btnDelete" Text="Xoá" FontSize="16" TextColor="Blue" BorderColor="Transparent" Background="Transparent" Clicked="btnDelete_Clicked"
+                        Grid.Row="0" />
 
-                <Button x:Name="btnDelete" Text="Xoá" FontSize="16" TextColor="Blue" BorderColor="Transparent" Background="Transparent" Clicked="btnDelete_Clicked"
-                       Grid.Column="2" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center"
-                       />
+                <Label Text="Danh Sách Sản phẩm" FontSize="Title" TextColor="Black" FontAttributes="Bold"
+                                    Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"
+                                    />
+
+                <Button Text="Xóa Tất Cả" x:Name="btnDelAll" FontSize="14" TextColor="Blue" BorderColor="Transparent" Background="Transparent" Clicked="btnDelAll_Clicked"
+                                    Grid.Column="2" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center"
+                                    />
             </Grid>
-            <ListView x:Name="lstCart" RowHeight="90" >
+
+            <Label x:Name="txtEmptyNotifice" Text="Giỏ hàng trống" FontSize="Large" IsVisible="false" 
+                   Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"
+                   />
+
+            <ListView x:Name="lstCart" RowHeight="90" IsVisible="true"
+                          Grid.Row="1" Grid.Column="0" 
+                          >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -47,32 +66,32 @@
                                     <ColumnDefinition Width="85"/>
                                 </Grid.ColumnDefinitions>
 
-                                <CheckBox Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Color="Aqua" IsChecked="{Binding isChecked, Mode=TwoWay}" 
-                                          CheckedChanged="CheckBox_CheckedChanged"
-                                           />
+                                <CheckBox Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Color="Aqua" IsChecked="{Binding isChecked, Mode=OneWayToSource}" 
+                                              CheckedChanged="CheckBox_CheckedChanged"
+                                               />
 
                                 <Image Source="{Binding food.image}" Aspect="AspectFill" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
 
                                 <StackLayout  Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand" 
-                                              Grid.Row="0" Grid.Column="2"
-                                              >
+                                                  Grid.Row="0" Grid.Column="2"
+                                                  >
                                     <Label Text="{Binding food.name}" FontAttributes="Bold" TextColor="Black" FontSize="16" 
-                                    />
+                                        />
                                     <Label Text="{Binding food.unit}" FontAttributes="Italic" FontSize="14"
-                                    />
+                                        />
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" VerticalOptions="Center" >
                                     <Label Text="Số lượng:" />
                                     <Label Text="{Binding soLuong}" />
                                     <Label Text="{Binding food.discount, Converter={StaticResource discountConverter}}" IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
-                                           Background="Orange" FontAttributes="Bold" TextColor="White" Padding="5, 0" />
+                                               Background="Orange" FontAttributes="Bold" TextColor="White" Padding="5, 0" />
                                 </StackLayout>
 
 
                                 <Label FontAttributes="Bold" FontSize="Medium" TextColor="Green" 
-                                    Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" HorizontalOptions="End" Padding="0, 0, 5, 0" VerticalOptions="Center"
-                                    >
+                                        Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" HorizontalOptions="End" Padding="0, 0, 5, 0" VerticalOptions="Center"
+                                        >
                                     <Label.Text>
                                         <MultiBinding Converter="{StaticResource costSoLuongConverter}">
                                             <Binding Path="food.cost" />
@@ -89,9 +108,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Grid>
+            <Grid VerticalOptions="End" HeightRequest="50" Grid.Row="2" Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition ></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="290"></ColumnDefinition>
@@ -110,6 +129,6 @@
                 <!-- Bottom Drawer-->
 
             </Grid>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -61,6 +61,7 @@ namespace Food
             if (apiResponse.success)
             {
                 _ = DisplayAlert("Thông báo", "Đặt hàng thành công", "OK");
+                _ = Navigation.PopAsync();
                 await Navigation.PushAsync(new ChiTietHoaDonPage(this.cartList, this.user));
             }
             else

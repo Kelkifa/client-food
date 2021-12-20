@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Food.ApiResponseClass;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,20 @@ namespace Food.TaiKhoanTabbedpages
         public OrderManagePage()
         {
             InitializeComponent();
+            GetOrderList();
+        }
+
+        private async void GetOrderList()
+        {
+            ApiCall api = new ApiCall();
+
+            OrderResponse orderResponse = await api.fetchAdminGetOrderAsync();
+
+            if (orderResponse.success)
+            {
+                lstOrder.ItemsSource = orderResponse.response;
+            }
+
         }
     }
 }

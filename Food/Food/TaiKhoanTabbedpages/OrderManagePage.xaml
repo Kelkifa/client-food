@@ -1,12 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Food.TaiKhoanTabbedpages.OrderManagePage">
+             x:Class="Food.TaiKhoanTabbedpages.OrderManagePage"
+             Title="Quản Lý Đơn Hàng"
+             >
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="labelRight">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="VerticalTextAlignment" Value="End" />
+        </Style>
+        <Style TargetType="Label" x:Key="labelValue">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="VerticalTextAlignment" Value="End" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="DANH SÁCH ĐƠN HÀNG" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Large"
+                   Padding="20"
+                   />
+
+            <ListView x:Name="lstOrder" RowHeight="220">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="3, 10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="115"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Số hóa đơn: " Style="{StaticResource labelValue}"
+                                   Grid.Row="0" Grid.Column="0"
+                                   />
+                                <Label Text="{Binding _id}" Style="{StaticResource labelRight}" FontSize="18"
+                                   Grid.Row="0" Grid.Column="1"
+                                   />
+
+                                <Label Text="Khach hang: " Style="{StaticResource labelValue}"
+                                    Grid.Row="1" Grid.Column="0"
+                                    />
+                                <Label Text="{Binding user.fullname}" Style="{StaticResource labelRight}"
+                                   Grid.Row="1" Grid.Column="1"
+                                   />
+
+                                <Label Text="Dia chi: " Style="{StaticResource labelValue}"
+                                   Grid.Row="2" Grid.Column="0"
+                                   />
+                                <Label Text="{Binding address}" Style="{StaticResource labelRight}"
+                                   Grid.Row="2" Grid.Column="1"
+                                   />
+
+                                <Label Text="Sdt: " Style="{StaticResource labelValue}"
+                                   Grid.Row="3" Grid.Column="0"
+                                   />
+                                <Label Text="{Binding sdt}" Style="{StaticResource labelRight}"
+                                    Grid.Row="3" Grid.Column="1"
+                                    />
+
+                                <Label Text="Tổng Tiền: " Style="{StaticResource labelValue}" FontSize="22" FontAttributes="None" TextColor="Black"
+                                   Grid.Row="4" Grid.Column="0"
+                                   />
+                                <Label Text="120,000" TextColor="Red" FontAttributes="Bold" FontSize="22" Style="{StaticResource labelRight}"
+                                   Grid.Row="4" Grid.Column="1"
+                                   />       
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

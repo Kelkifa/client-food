@@ -32,5 +32,13 @@ namespace Food.TaiKhoanTabbedpages
             }
 
         }
+
+        private void lstOrder_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Order selectedOrder = (Order)lstOrder.SelectedItem;
+
+            Navigation.PushAsync(new OrderManageDetailPage(selectedOrder));
+            // NAVIGATION TO DETAIORDERPAGE
+        }
     }
 }

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Food.TaiKhoanTabbedpages.OrderManageDetailPage"
+            xmlns:FoodConverter="clr-namespace:Food.Converters"
+             >
+    <ContentPage.Resources>
+        <FoodConverter:CostConverter x:Key="costConverter"/>
+        <FoodConverter:TotalCostFromSoLuongConverter x:Key="costSoLuongConverter" />
+        <FoodConverter:DiscountCoverter x:Key="discountConverter"/>
+        <FoodConverter:IsShowCostConverter x:Key="costIsShowConverter" />
+        
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style TargetType="Label" x:Key="labelRight">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="VerticalTextAlignment" Value="End" />
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+        <Style TargetType="Label" x:Key="labelValue">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="VerticalOptions" Value="End" />
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="CHI TIẾT ĐƠN HÀNG" FontSize="Title" HorizontalTextAlignment="Center" Padding="0,10"
+                   Grid.Row="0" Grid.Column="0"
+                   />
+            <StackLayout Grid.Row="1" Grid.Column="0">
+                <Grid Padding="0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="115"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Số hóa đơn: " Style="{StaticResource labelValue}"
+                                   Grid.Row="0" Grid.Column="0"
+                                   />
+                    <Label x:Name="txtId" Style="{StaticResource labelRight}" FontSize="18"
+                                   Grid.Row="0" Grid.Column="1"
+                                   />
+
+                    <Label Text="Khách hàng: " Style="{StaticResource labelValue}"
+                                    Grid.Row="1" Grid.Column="0"
+                                    />
+                    <Label x:Name="txtFullname" Style="{StaticResource labelRight}"
+                                   Grid.Row="1" Grid.Column="1"
+                                   />
+
+                    <Label Text="Dia chi: " Style="{StaticResource labelValue}"
+                                   Grid.Row="2" Grid.Column="0"
+                                   />
+                    <Label x:Name="txtAddress" Style="{StaticResource labelRight}"
+                                   Grid.Row="2" Grid.Column="1"
+                                   />
+
+                    <Label Text="Sdt: " Style="{StaticResource labelValue}"
+                                   Grid.Row="3" Grid.Column="0"
+                                   />
+                    <Label x:Name="txtSdt" Style="{StaticResource labelRight}"
+                                    Grid.Row="3" Grid.Column="1"
+                                    />
+
+                    <Label Text="Ngày đặt: " Style="{StaticResource labelValue}"
+                                   Grid.Row="4" Grid.Column="0"
+                                   />
+                    <Label x:Name="txtCreatedAt" Style="{StaticResource labelRight}"
+                                   Grid.Row="4" Grid.Column="1"
+                                   />
+                    <Label Text="Danh Sách Sản phẩm" FontSize="Large" Padding="0,5,0,0"
+                               Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                               />
+
+                </Grid>
+                <ListView x:Name="lstCart" RowHeight="80"
+                              Grid.Row="1" Grid.Column="0"
+                                SeparatorColor="Black"
+                              >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="85"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding food.image}" Aspect="AspectFill"
+                                               Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+
+                                    <StackLayout  Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand" 
+                                                  Grid.Row="0" Grid.Column="1"
+                                                  >
+                                        <Label Text="{Binding food.name}" FontAttributes="Bold" TextColor="Black" FontSize="20" 
+                                        />
+                                        <Label Text="{Binding food.unit}" FontAttributes="Italic" FontSize="16"
+                                        />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" >
+                                        <Label Text="Số lượng:" FontSize="18" />
+                                        <Label Text="{Binding soLuong}" FontSize="18"/>
+                                        <Label Text="{Binding food.discount, Converter={StaticResource discountConverter}}" IsVisible="{Binding discount, Converter={StaticResource costIsShowConverter}}"
+                                               Background="Orange" FontAttributes="Bold" TextColor="White" Padding="5, 0" FontSize="18"/>
+                                    </StackLayout>
+
+                                    <Label FontAttributes="Bold" FontSize="Medium" TextColor="Green"
+                                        Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" HorizontalOptions="End" Padding="0, 0, 5, 0" VerticalOptions="Center" 
+                                        >
+                                        <Label.Text>
+                                            <MultiBinding Converter="{StaticResource costSoLuongConverter}">
+                                                <Binding Path="food.cost" />
+                                                <Binding Path="soLuong" />
+                                                <Binding Path="food.discount" />
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <Grid Grid.Row="2" Grid.Column="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Text="CHẤP NHẬN" BackgroundColor="LightGreen" x:Name="btnAccept" Clicked="btnAccept_Clicked"
+                        Grid.Row="0" Grid.Column="0"
+                        />
+                <Button Text="TỪ CHỐI" BackgroundColor="IndianRed" x:Name="btnDisagree" Clicked="btnDisagree_Clicked"
+                        Grid.Row="0" Grid.Column="1"
+                        />
+            </Grid>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

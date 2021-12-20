@@ -190,6 +190,28 @@ namespace Food
             return apiResponse;
         }
 
+        public async Task<ApiResponse> fetchOrderAcceptAsync(string orderId, bool isAccept)
+        {
+            string url = "api/order/accept";
+            var pairs = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("orderId", orderId),
+                new KeyValuePair<string, string>("isAccept", isAccept.ToString()),
+            };
+            FormUrlEncodedContent content = new FormUrlEncodedContent(pairs);
+
+            HttpRequestMessage message = SetMessage("post", content, url);
+
+            var response = this.client.SendAsync(message).Result;
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(result);
+
+            return apiResponse;
+
+        }
+
         private HttpRequestMessage SetMessage(string method, FormUrlEncodedContent content, string url )
         {
             return new HttpRequestMessage

@@ -10,6 +10,8 @@ namespace Food
         public User user {get;set;}
         public List<Cart> cartList { get; set; }
 
+        public int state { get; set; }
+
         public string address { get; set; }
         public string sdt { get; set; }
 

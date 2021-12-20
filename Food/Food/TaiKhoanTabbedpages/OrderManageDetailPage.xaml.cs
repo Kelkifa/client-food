@@ -38,10 +38,10 @@ namespace Food.TaiKhoanTabbedpages
             int totalDiscount = 0;
             foreach(Cart cart in this.order.cartList)
             {
-                totalCost += CaculateCost(cart.food.cost, cart.food.discount, cart.soLuong);
-                totalDiscount = CaculateDiscount(cart.food.cost, cart.food.discount, cart.soLuong);
+                totalCost += cart.food.cost * cart.soLuong;
+                totalDiscount += CaculateDiscount(cart.food.cost, cart.food.discount, cart.soLuong);
             }
-            txtTotalCost.Text = totalCost.ToString("N0") + " đ";
+            txtTotalCost.Text = (totalCost - totalDiscount).ToString("N0") + " đ";
             txtTotalCost1.Text = totalCost.ToString("N0") + " đ";
             txtTotalDiscount.Text = totalDiscount.ToString("N0") + " đ";
         }
@@ -52,7 +52,7 @@ namespace Food.TaiKhoanTabbedpages
         }
         private int CaculateDiscount(int cost, int discount, int soLuong)
         {
-            return (cost * discount / 100) * soLuong;
+            return (cost * discount * soLuong) / 100 ;
         }
         
         private void btnAccept_Clicked(object sender, EventArgs e)

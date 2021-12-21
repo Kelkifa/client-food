@@ -8,7 +8,7 @@ using Food.ApiResponseClass;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Food
+namespace Food.TaiKhoanTabbedpages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DSHoaDonPage : ContentPage

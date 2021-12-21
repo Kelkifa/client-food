@@ -23,7 +23,7 @@
     <EmbeddedResource Update="CartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ChiTietHoaDonPage.xaml">
+    <EmbeddedResource Update="TaiKhoanTabbedpages\ChiTietHoaDonPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="DiscoverTabbedPages\BanChayPage.xaml">
@@ -41,7 +41,7 @@
     <EmbeddedResource Update="DiscoverTabbedPages\XemNhanhPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="DSHoaDonPage.xaml">
+    <EmbeddedResource Update="TaiKhoanTabbedpages\DSHoaDonPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="TabbedPageContainer.xaml">

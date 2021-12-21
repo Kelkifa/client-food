@@ -82,9 +82,18 @@
                         x:Name="btnRegister" Clicked="btnRegister_Clicked" />
             </StackLayout>
             <StackLayout Grid.Row="1"  x:Name="layoutBottom" IsVisible="True">
-                <Button Text="Đơn Hàng Của Tôi" Style="{StaticResource btnBottom}" x:Name="btnMyOrder" Clicked="btnMyOrder_Clicked"/>
-                <Button Text="Quản Lý Các Đơn Hàng" Style="{StaticResource btnBottom}" x:Name="btnManageOrder" IsVisible="false" Clicked="btnManageOrder_Clicked"/>
-                <Button Text="Đăng Xuất" Style="{StaticResource btnBottom}" x:Name="btnLogOut" Clicked="btnLogOut_Clicked"/>
+                <Button Text="Đơn Hàng Của Tôi" Style="{StaticResource btnBottom}" x:Name="btnMyOrder" Clicked="btnMyOrder_Clicked"
+                        BackgroundColor="Yellow" TextColor="Black"
+                        Margin="50,0" CornerRadius="30" FontSize="18" FontAttributes="Bold"/>
+                
+                <Button Text="Quản Lý Các Đơn Hàng" Style="{StaticResource btnBottom}" x:Name="btnManageOrder" 
+                        IsVisible="false" Clicked="btnManageOrder_Clicked"
+                        BackgroundColor="Green" TextColor="White"
+                        Margin="50,0" CornerRadius="30" FontSize="18" FontAttributes="Bold"/>
+                
+                <Button Text="Đăng Xuất" Style="{StaticResource btnBottom}" x:Name="btnLogOut" Clicked="btnLogOut_Clicked"
+                        BackgroundColor="Red" TextColor="White"
+                        Margin="50,0" CornerRadius="30" FontSize="18" FontAttributes="Bold"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

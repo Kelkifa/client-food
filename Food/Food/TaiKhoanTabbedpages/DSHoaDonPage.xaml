@@ -1,28 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Food.TaiKhoanTabbedpages.OrderManagePage"
-             Title="Quản Lý Đơn Hàng"
-             xmlns:FoodConverter="clr-namespace:Food.Converters"
+             x:Class="Food.TaiKhoanTabbedpages.DSHoaDonPage"
+             xmlns:FoodConverter="clr-namespace:Food.Converters" xmlns:food="clr-namespace:Food"
              >
     <ContentPage.Resources>
         <Style TargetType="Label" x:Key="labelRight">
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="15" />
             <Setter Property="VerticalTextAlignment" Value="End" />
             <Setter Property="TextColor" Value="#4f4f4f"/>
         </Style>
         <Style TargetType="Label" x:Key="labelValue">
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="15" />
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="VerticalTextAlignment" Value="End" />
         </Style>
 
         <FoodConverter:TotalCostFromCart x:Key="totalCostFromCartConverter"/>
-        
+
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="DANH SÁCH ĐƠN HÀNG" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Large" TextColor="Black"
+            <Label Text="ĐƠN HÀNG CỦA TÔI" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Large" TextColor="Black"
                    Padding="20"
                    />
 
@@ -35,67 +34,53 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="20,0,5,20" >
+                            <Grid Margin="10,0,5,20" >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="115"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="Số hóa đơn: " Style="{StaticResource labelValue}"
-                                   Grid.Row="0" Grid.Column="0" 
-                                   />
-                                <Label Text="{Binding _id}" Style="{StaticResource labelRight}" FontSize="18"
-                                   Grid.Row="0" Grid.Column="1" FontAttributes="Italic"
-                                   />
+                                <Image Source="logo.png" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Aspect="AspectFit"
+                                       HeightRequest="65" WidthRequest="65" Margin="0,0,10,0"/>
 
-                                <Label Text="Khách Hàng:"  Style="{StaticResource labelValue}"
-                                    Grid.Row="1" Grid.Column="0"
-                                    />
-                                <Label Text="{Binding user.fullname}" Style="{StaticResource labelRight}"
-                                   Grid.Row="1" Grid.Column="1"
+                                <Label Text="Số hóa đơn: " Style="{StaticResource labelValue}"
+                                   Grid.Row="0" Grid.Column="1" 
+                                   />
+                                <Label Text="{Binding _id}" Style="{StaticResource labelRight}"
+                                   Grid.Row="0" Grid.Column="2" FontAttributes="Italic"
                                    />
 
                                 <Label Text="Địa Chỉ:" Style="{StaticResource labelValue}"
-                                   Grid.Row="2" Grid.Column="0"
+                                   Grid.Row="1" Grid.Column="1"
                                    />
                                 <Label Text="{Binding address}" Style="{StaticResource labelRight}"
-                                   Grid.Row="2" Grid.Column="1"
+                                   Grid.Row="1" Grid.Column="2"
                                    />
-
-                                <Label Text="Sdt: " Style="{StaticResource labelValue}"
-                                   Grid.Row="3" Grid.Column="0"
-                                   />
-                                <Label Text="{Binding sdt}" Style="{StaticResource labelRight}"
-                                    Grid.Row="3" Grid.Column="1"
-                                    />
 
                                 <Label Text="Ngày đặt: " Style="{StaticResource labelValue}"
-                                   Grid.Row="4" Grid.Column="0"
+                                   Grid.Row="2" Grid.Column="1"
                                    />
                                 <Label Text="{Binding createdAt}" Style="{StaticResource labelRight}"
-                                   Grid.Row="4" Grid.Column="1"
+                                   Grid.Row="2" Grid.Column="2"
                                    />
 
-                                <Label Text="Tổng Tiền: " Style="{StaticResource labelValue}" FontSize="22" FontAttributes="None" TextColor="Black"
-                                   Grid.Row="5" Grid.Column="0"
+                                <Label Text="{Binding cartList, Converter={StaticResource totalCostFromCartConverter}}" TextColor="Green" FontAttributes="Bold" FontSize="22"
+                                   Grid.Row="3" Grid.Column="2" Style="{StaticResource labelRight}"
                                    />
-                                <Label Text="{Binding cartList, Converter={StaticResource totalCostFromCartConverter}}" TextColor="Green" FontAttributes="Bold" FontSize="22" Style="{StaticResource labelRight}"
-                                   Grid.Row="5" Grid.Column="1"
-                                   />       
                             </Grid>
 
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

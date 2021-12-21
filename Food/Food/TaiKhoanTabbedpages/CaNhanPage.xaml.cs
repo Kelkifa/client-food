@@ -93,7 +93,7 @@ namespace Food.TaiKhoanTabbedpages
 
         private void btnMyOrder_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new DSHoaDonPage());
         }
 
         private void btnLogOut_Clicked(object sender, EventArgs e)

@@ -7,8 +7,9 @@
              >
     <ContentPage.Resources>
         <Style TargetType="Label" x:Key="labelRight">
-            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontSize" Value="20" />
             <Setter Property="VerticalTextAlignment" Value="End" />
+            <Setter Property="TextColor" Value="#4f4f4f"/>
         </Style>
         <Style TargetType="Label" x:Key="labelValue">
             <Setter Property="FontSize" Value="20" />
@@ -34,34 +35,34 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="3, 10" >
+                            <Grid Margin="20,0,5,20" >
                                 <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="115"/>
-                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Label Text="Số hóa đơn: " Style="{StaticResource labelValue}"
-                                   Grid.Row="0" Grid.Column="0"
+                                   Grid.Row="0" Grid.Column="0" 
                                    />
                                 <Label Text="{Binding _id}" Style="{StaticResource labelRight}" FontSize="18"
-                                   Grid.Row="0" Grid.Column="1"
+                                   Grid.Row="0" Grid.Column="1" FontAttributes="Italic"
                                    />
 
-                                <Label Text="Khach hang: " Style="{StaticResource labelValue}"
+                                <Label Text="Khách Hàng:"  Style="{StaticResource labelValue}"
                                     Grid.Row="1" Grid.Column="0"
                                     />
                                 <Label Text="{Binding user.fullname}" Style="{StaticResource labelRight}"
                                    Grid.Row="1" Grid.Column="1"
                                    />
 
-                                <Label Text="Dia chi: " Style="{StaticResource labelValue}"
+                                <Label Text="Địa Chỉ:" Style="{StaticResource labelValue}"
                                    Grid.Row="2" Grid.Column="0"
                                    />
                                 <Label Text="{Binding address}" Style="{StaticResource labelRight}"
@@ -85,7 +86,7 @@
                                 <Label Text="Tổng Tiền: " Style="{StaticResource labelValue}" FontSize="22" FontAttributes="None" TextColor="Black"
                                    Grid.Row="5" Grid.Column="0"
                                    />
-                                <Label Text="{Binding cartList, Converter={StaticResource totalCostFromCartConverter}}" TextColor="Red" FontAttributes="Bold" FontSize="22" Style="{StaticResource labelRight}"
+                                <Label Text="{Binding cartList, Converter={StaticResource totalCostFromCartConverter}}" TextColor="Green" FontAttributes="Bold" FontSize="22" Style="{StaticResource labelRight}"
                                    Grid.Row="5" Grid.Column="1"
                                    />       
                             </Grid>

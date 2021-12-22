@@ -17,6 +17,8 @@
         </Style>
 
         <FoodConverter:TotalCostFromCart x:Key="totalCostFromCartConverter"/>
+        <FoodConverter:StateConverter x:Key="stateConverter" />
+        <FoodConverter:StateColorConverter x:Key="stateColorConverter" />
 
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -39,6 +41,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
@@ -71,9 +74,20 @@
                                    Grid.Row="2" Grid.Column="2"
                                    />
 
+                                <Label Text="Tổng tiền: " Style="{StaticResource labelValue}"
+                                   Grid.Row="3" Grid.Column="1"
+                                   />
                                 <Label Text="{Binding cartList, Converter={StaticResource totalCostFromCartConverter}}" TextColor="Green" FontAttributes="Bold" FontSize="22"
                                    Grid.Row="3" Grid.Column="2" Style="{StaticResource labelRight}"
                                    />
+                                
+                                <Label Text="Trạng Thái: " Style="{StaticResource labelValue}"
+                                   Grid.Row="4" Grid.Column="1"
+                                   />
+                                <Label Text="{Binding state, Converter={StaticResource stateConverter}}" Style="{StaticResource labelRight}" TextColor="{Binding state, Converter={StaticResource stateColorConverter}}"
+                                   Grid.Row="4" Grid.Column="2"
+                                   />
+                                
                             </Grid>
 
                         </ViewCell>

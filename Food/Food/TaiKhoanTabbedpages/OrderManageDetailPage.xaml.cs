@@ -54,15 +54,35 @@ namespace Food.TaiKhoanTabbedpages
         {
             return (cost * discount * soLuong) / 100 ;
         }
-        
-        private void btnAccept_Clicked(object sender, EventArgs e)
-        {
+ 
 
+        private async void btnAgree_Clicked(object sender, EventArgs e)
+        {
+            ApiCall api = new ApiCall();
+            ApiResponse apiResponse = await api.fetchOrderAcceptAsync(this.order._id, true);
+
+            if (apiResponse.success)
+            {
+                _ = DisplayAlert("Thông báo", "Đơn hàng đã được xác nhận", "OK");
+            }
+            else
+            {
+                _ = DisplayAlert("Thông báo", apiResponse.message, "OK");
+            }
         }
 
-        private void btnDisagree_Clicked(object sender, EventArgs e)
+        private async void btnDisagree_Clicked(object sender, EventArgs e)
         {
-
+            ApiCall api = new ApiCall();
+            ApiResponse apiResponse = await api.fetchOrderAcceptAsync(this.order._id, false);
+            if (apiResponse.success)
+            {
+                _ = DisplayAlert("Thông báo", "Đơn hàng đã được từ chối", "OK");
+            }
+            else
+            {
+                _ = DisplayAlert("Thông báo", apiResponse.message, "OK");
+            }
         }
     }
 }

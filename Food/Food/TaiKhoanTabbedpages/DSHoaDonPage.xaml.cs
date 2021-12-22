@@ -16,6 +16,11 @@ namespace Food.TaiKhoanTabbedpages
         public DSHoaDonPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             GetMyOrders();
         }
         private async void GetMyOrders() 
@@ -25,6 +30,10 @@ namespace Food.TaiKhoanTabbedpages
             if(orderResponse.success)
             {
                 lstOrder.ItemsSource = orderResponse.response;
+            }
+            else
+            {
+                _ = DisplayAlert("Thông báo", orderResponse.message, "OK");
             }
         }
 

@@ -1,9 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Food.TabbedPageFood.NganhHangTabbedPage" IconImageSource="iconMenu.png">
-  <!--Pages can be added as references or inline-->
-  <ContentPage Title="Tab 1" />
-  <ContentPage Title="Tab 2" />
-  <ContentPage Title="Tab 3" />
-</TabbedPage>
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsLayout="VerticalGrid, 2" x:Name="lstNganhHang" SelectionChanged="lstNganhHang_SelectionChanged" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding name_NganhHang}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"
+                                       FontSize="18" TextColor="black" FontAttributes="Italic" Margin="10,45,0,0"/>
+                                <Image Source="{Binding img_NganhHang}" Grid.Row="1" Grid.Column="0" HorizontalOptions="End"/>
+
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

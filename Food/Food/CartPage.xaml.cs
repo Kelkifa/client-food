@@ -134,8 +134,12 @@ namespace Food
             {
                 DisplayAlert("Thông báo", "Bạn chưa chọn đồ ăn nào", "Đồng ý");
             }
+            else 
+            { 
+                Navigation.PushAsync(new ThanhToanPage(selectedCarts)); 
+            }
 
-            Navigation.PushAsync(new ThanhToanPage(selectedCarts));
+            
         }
 
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)

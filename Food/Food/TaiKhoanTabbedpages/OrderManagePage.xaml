@@ -7,17 +7,19 @@
              >
     <ContentPage.Resources>
         <Style TargetType="Label" x:Key="labelRight">
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="15" />
             <Setter Property="VerticalTextAlignment" Value="End" />
             <Setter Property="TextColor" Value="#4f4f4f"/>
         </Style>
         <Style TargetType="Label" x:Key="labelValue">
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="15" />
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="VerticalTextAlignment" Value="End" />
         </Style>
 
         <FoodConverter:TotalCostFromCart x:Key="totalCostFromCartConverter"/>
+        <FoodConverter:StateConverter x:Key="stateConverter" />
+        <FoodConverter:StateColorConverter x:Key="stateColorConverter" />
         
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -35,60 +37,55 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="20,0,5,20" >
+                            <Grid Margin="10,0,5,20" >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="115"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
+                                <Image Source="logo.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" Aspect="AspectFit"
+                                       HeightRequest="65" WidthRequest="65" Margin="0,0,10,0"/>
+
                                 <Label Text="Số hóa đơn: " Style="{StaticResource labelValue}"
-                                   Grid.Row="0" Grid.Column="0" 
+                                   Grid.Row="0" Grid.Column="1" 
                                    />
-                                <Label Text="{Binding _id}" Style="{StaticResource labelRight}" FontSize="18"
-                                   Grid.Row="0" Grid.Column="1" FontAttributes="Italic"
+                                <Label Text="{Binding _id}" Style="{StaticResource labelRight}"
+                                   Grid.Row="0" Grid.Column="2" FontAttributes="Italic"
                                    />
 
                                 <Label Text="Khách Hàng:"  Style="{StaticResource labelValue}"
-                                    Grid.Row="1" Grid.Column="0"
+                                    Grid.Row="1" Grid.Column="1"
                                     />
                                 <Label Text="{Binding user.fullname}" Style="{StaticResource labelRight}"
-                                   Grid.Row="1" Grid.Column="1"
+                                   Grid.Row="1" Grid.Column="2"
                                    />
-
-                                <Label Text="Địa Chỉ:" Style="{StaticResource labelValue}"
-                                   Grid.Row="2" Grid.Column="0"
-                                   />
-                                <Label Text="{Binding address}" Style="{StaticResource labelRight}"
+                                <Label Text="Ngày đặt: " Style="{StaticResource labelValue}"
                                    Grid.Row="2" Grid.Column="1"
                                    />
-
-                                <Label Text="Sdt: " Style="{StaticResource labelValue}"
-                                   Grid.Row="3" Grid.Column="0"
-                                   />
-                                <Label Text="{Binding sdt}" Style="{StaticResource labelRight}"
-                                    Grid.Row="3" Grid.Column="1"
-                                    />
-
-                                <Label Text="Ngày đặt: " Style="{StaticResource labelValue}"
-                                   Grid.Row="4" Grid.Column="0"
-                                   />
                                 <Label Text="{Binding createdAt}" Style="{StaticResource labelRight}"
-                                   Grid.Row="4" Grid.Column="1"
+                                   Grid.Row="2" Grid.Column="2"
                                    />
 
                                 <Label Text="Tổng Tiền: " Style="{StaticResource labelValue}" FontSize="22" FontAttributes="None" TextColor="Black"
-                                   Grid.Row="5" Grid.Column="0"
+                                   Grid.Row="3" Grid.Column="1"
                                    />
                                 <Label Text="{Binding cartList, Converter={StaticResource totalCostFromCartConverter}}" TextColor="Green" FontAttributes="Bold" FontSize="22" Style="{StaticResource labelRight}"
-                                   Grid.Row="5" Grid.Column="1"
-                                   />       
+                                   Grid.Row="3" Grid.Column="2"
+                                   />
+                                <Label Text="Trạng Thái: " Style="{StaticResource labelValue}"
+                                   Grid.Row="4" Grid.Column="1"
+                                   />
+                                <Label Text="{Binding state, Converter={StaticResource stateConverter}}" Style="{StaticResource labelRight}" TextColor="{Binding state, Converter={StaticResource stateColorConverter}}"
+                                   Grid.Row="4" Grid.Column="2"
+                                   />
                             </Grid>
 
                         </ViewCell>

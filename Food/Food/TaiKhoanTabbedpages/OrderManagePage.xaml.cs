@@ -17,6 +17,13 @@ namespace Food.TaiKhoanTabbedpages
         public OrderManagePage()
         {
             InitializeComponent();
+            
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             GetOrderList();
         }
 

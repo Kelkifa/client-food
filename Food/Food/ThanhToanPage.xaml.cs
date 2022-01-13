@@ -62,7 +62,7 @@ namespace Food
             if (apiResponse.success)
             {
                 OrderResponse orderResponse = await api.fetchGetOrderAsync();
-                Order order = orderResponse.response.LastOrDefault();
+                Order order = orderResponse.response.FirstOrDefault();
                 _ = DisplayAlert("Thông báo", "Đặt hàng thành công", "OK");
                 _ = Navigation.PopAsync();
                 await Navigation.PushAsync(new ChiTietHoaDonPage(order));
